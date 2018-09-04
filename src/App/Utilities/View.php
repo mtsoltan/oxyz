@@ -13,13 +13,19 @@ class View
     }
 
     public function cssUrl($file) {
-        $min = sprintf('/static/css/%s.min.css', $file);
-        if (file_exists(PUBLIC_ROOT . $min)) {
-            return sprintf('%s?t=%s', $min, filemtime(PUBLIC_ROOT . $min));
+        $templates = []; // Templates order matters.
+
+        if ($this->di['language'] == 'ar') { // Use RTL stylesheets if found.
+            $templates[] = '/static/css/%s.rtl.min.css';
+            $templates[] = '/static/css/%s.rtl.css';
         }
-        $max = sprintf('/static/css/%s.css', $file);
-        if (file_exists(PUBLIC_ROOT . $max)) {
-            return sprintf('%s?t=%s', $max, filemtime(PUBLIC_ROOT . $max));
+        $templates[] = '/static/css/%s.min.css';
+        $templates[] = '/static/css/%s.css';
+        foreach ($templates as $template) {
+            $path = sprintf($template, $file);
+            if (file_exists(PUBLIC_ROOT . $path)) {
+                return sprintf('%s?t=%s', $path, filemtime(PUBLIC_ROOT . $path));
+            }
         }
         return '';
     }
