@@ -35,12 +35,6 @@
     width: 0; min-width: 0; max-width: 0;
     padding: 0; margin: 0; border: none;
 }
-.admin-table span.fix {
-    font-size: 0;
-}
-.admin-table span.fix:after {
-    content: ".";
-}
 .admin-table td.actions form {
     position: absolute;
 }

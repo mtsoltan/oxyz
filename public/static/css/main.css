@@ -111,3 +111,21 @@ h1,h2,h3,h4,h5 { font-family: "Montserrat";}
     padding: 4px;
     line-height: 1;
 }
+span.fix {
+    font-size: 0;
+}
+span.fix:after {
+    content: ".";
+}
+.order {
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+}
+.order > div {
+    padding: 0 2em 0 2em;
+    border-top: 1px solid #000;
+    clear: both;
+}
+.customer_note .col-3-4 {
+    white-space: pre-wrap;
+}

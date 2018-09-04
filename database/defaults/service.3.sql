@@ -5,6 +5,8 @@ INSERT IGNORE INTO products VALUES(3,1,
     'en=Quisque dignissim sem quis leo porttitor, ac convallis lorem vestibulum. Praesent consequat lorem pretium rhoncus tempus. Sed eu pulvinar lectus, vel viverra ipsum. Duis ac massa turpis. Praesent iaculis lacus in malesuada congue. Vivamus luctus sed quam vel ullamcorper. Morbi ultrices sodales ullamcorper. Nulla lacus nulla, semper id tortor at, volutpat sollicitudin enim. Maecenas nec facilisis orci. Nam vel convallis nulla. Donec pharetra fringilla mauris, sit amet consequat nunc mollis id. Cras nec lectus ac mauris imperdiet bibendum quis lacinia urna. Proin vehicula accumsan lectus quis fermentum.',
   '/static/images/services/3.jpg',1,0,1,'',UNIX_TIMESTAMP(),0);
 INSERT IGNORE INTO keystore VALUES(NULL,1,1,
+    'ar=الملف المراد تنفيذه\n'
+    'en=File to Carve\n',
     'ar=\n'
     'en=Please select a proteus / eagle / altium project or pcb layout file in one of the following extensions (pdsprj, pcbdoc, brd, pdf, gerber) or compress them (rar, zip) in case of multiple files. The maximum allowed upload size is 25 MB.\n',
     '__form::\n' 'name=file\n' 'type=file\n' 'id=file\n' 'required=1\n',

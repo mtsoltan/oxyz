@@ -5,6 +5,8 @@ INSERT IGNORE INTO products VALUES(5,1,
     'en=Pellentesque mattis gravida sem sed viverra. Suspendisse potenti. Fusce pellentesque tincidunt lorem, sed molestie ante ullamcorper eget. Donec elit nisi, dictum venenatis nisl at, finibus ultrices nisi. Ut pulvinar gravida tempus. Aliquam sit amet tortor a lorem feugiat blandit. Sed quis aliquet eros, consequat bibendum turpis. Donec sed ante sed orci faucibus sagittis. Mauris et pulvinar eros. Curabitur pharetra odio massa, ac laoreet purus hendrerit in. Phasellus vel bibendum quam. Fusce suscipit sollicitudin arcu, sit amet semper magna tempus sit amet. Maecenas aliquet, sem ac bibendum imperdiet, nunc metus consectetur mauris, vel facilisis justo diam faucibus velit. Praesent venenatis urna purus, non sodales sem efficitur quis. Sed malesuada rhoncus arcu sed porttitor.',
   '/static/images/services/5.jpg',1,0,1,'',UNIX_TIMESTAMP(),0);
 INSERT IGNORE INTO keystore VALUES(NULL,1,1,
+    'ar=الصورة\n'
+    'en=Picture\n',
     'ar=برجاء رفع صورة للتصميم المراد تنفيذه او ملف مضغوط يحتوي علي اكثر من صورة ان وجدت\n'
     'en=Please upload the picture of the product you want designed, or a compressed file (zip, rar) containing the images if you wish to provide multiple images.\n',
     '__form::\n' 'name=file\n' 'type=file\n' 'id=file\n' 'required=1\n',

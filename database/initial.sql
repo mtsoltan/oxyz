@@ -91,8 +91,8 @@ CREATE TABLE IF NOT EXISTS `session_data` ( -- TODO: Check integrity and usage o
 CREATE TABLE IF NOT EXISTS `products` (
   `id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
   `state` TINYINT UNSIGNED NOT NULL, -- ENUM: Disabled, Enabled
-  `name` VARCHAR(255) NOT NULL, -- IDREF: Keystore
-  `description` TEXT NOT NULL, -- IDREF: Keystore
+  `name` VARCHAR(255) NOT NULL,
+  `description` TEXT NOT NULL,
   `image` VARCHAR(255) NOT NULL, -- Internal URL starting with /
   `type` TINYINT UNSIGNED NOT NULL, -- ENUM: Product, Service
   `price` SMALLINT UNSIGNED NOT NULL, -- 0 for Services
