@@ -39,6 +39,8 @@ class Main extends Base
             $this->group('', function () {
                 $this->get('/logout', SessionCtrl::class.':logout')->setName('session:logout');
                 $this->get('/dashboard', MainCtrl::class.':dashboard')->setName('main:dashboard');
+                $this->get('/orders', OrderCtrl::class.':all')->setName('order:all');
+                $this->post('/orders', OrderCtrl::class.':edit')->setName('order:edit');
             })->add($this->access()->ensureLoggedIn());
 
             // Admin Routes

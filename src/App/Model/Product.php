@@ -18,4 +18,8 @@ class Product extends Model
     public function getEnabledServices() {
         return $this->getByEntityData(['type' => self::TYPE_SERVICE, 'state' => self::STATE_ENABLED]);
     }
+
+    public function getAllServices() {
+        return $this->getByEntityData(['type' => self::TYPE_SERVICE]);
+    }
 }

@@ -5,6 +5,11 @@ class Order extends Entity
 {
     protected $ini = [];
 
+    public function getKeyType() {
+        $keystoreModel = $this->di['model.keystore'];
+        return $keystoreModel::TYPE_ORDER;
+    }
+
     /**
      * Data is an array of ['key' => $key, 'value' => $value] arrays.
      * @param array[] $data

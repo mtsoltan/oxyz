@@ -12,8 +12,38 @@ class OrderCtrl extends BaseCtrl
      * @return \Slim\Http\Response The rendered view.
      */
     public function all($request, $response, $args) {
-        return $this->view->render($response, '@private/file/all.twig', array(
-            'files' => $this->di['model.file']->getEnabled()
+        $data = [];
+        if (!is_null($product_id = $request->getQueryParam('product_id'))) {
+            if (ctype_digit("$product_id")) {
+                $data['product_id'] = $product_id;
+            }
+        }
+        if (!is_null($state = $request->getQueryParam('state'))) {
+            if (ctype_digit("$state")) {
+                $data['state'] = $state;
+            }
+        }
+        $listKeys = $request->getQueryParam('listkeys');
+        $orders = $this->di['model.order']->getByEntityData($data);
+        if (!isset($data['product_id']))
+            $products = $this->di['model.product']->getAllServices(); // Including disabled.
+        else
+            $products = [$this->di['model.product']->getById($data['product_id'])];
+            $productsKeyed = [];
+            foreach ($products as $product) {
+                $productsKeyed[$product->id] = $product;
+            }
+            $keystores = $this->di['model.keystore']->getByEntityData(['entity_type' => $products[0]->getKeyType()]);
+            $keystoresKeyed = [];
+            foreach ($keystores as $keystore) {
+                $keystoresKeyed[$keystore->id] = $keystore;
+            }
+
+        return $this->view->render($response, '@private/order/all.twig', array(
+            'orders' => $orders,
+            'products' => $productsKeyed,
+            'keystore' => $keystoresKeyed,
+            'list_keys' => $listKeys ? true : false,
         ));
     }
 
@@ -143,22 +173,6 @@ class OrderCtrl extends BaseCtrl
             return $handler->respondWithError($errors, $response);
         }
 
-        // Handle Customer
-        $customerModel = $this->di['model.customer'];
-        $browserId = $this->getBrowserId();
-        $customer = $customerModel->createEntity([
-            'state' => $customerModel::STATE_ENABLED,
-            'phone' => $validatedData['phone']['value'],
-            'name' => $validatedData['name']['value'],
-            'email' => $validatedData['email']['value'],
-            'province' => $validatedData[$builder::SELECT_MARKER . $customerModel::PROVINCE_FIELD]['value'],
-            'flags' => (1 << $customerModel::BITMASK_CREATED +
-                0 << $customerModel::BITMASK_SAVED), // TODO: Add save checkbox.
-            'ip' => $this->di['ip'],
-            'device' => $browserId->OS,
-            'browser' => $browserId->Browser,
-        ])->save();
-
         // Handle File
         if ($files) foreach($files as $file) {
             if (!$file->file) { // Last file[] input is always empty.
@@ -176,6 +190,22 @@ class OrderCtrl extends BaseCtrl
             $handler->regenerateToken();
             return $handler->respondWithError($errors, $response);
         }
+
+        // Handle Customer
+        $customerModel = $this->di['model.customer'];
+        $browserId = $this->getBrowserId();
+        $customer = $customerModel->createEntity([
+            'state' => $customerModel::STATE_ENABLED,
+            'phone' => $validatedData['phone']['value'],
+            'name' => $validatedData['name']['value'],
+            'email' => $validatedData['email']['value'],
+            'province' => $validatedData[$builder::SELECT_MARKER . $customerModel::PROVINCE_FIELD]['value'],
+            'flags' => (1 << $customerModel::BITMASK_CREATED +
+                0 << $customerModel::BITMASK_SAVED), // TODO: Add save checkbox.
+            'ip' => $this->di['ip'],
+            'device' => $browserId->OS,
+            'browser' => $browserId->Browser,
+        ])->save();
 
         // Handle Order
         $orderModel = $this->di['model.order'];

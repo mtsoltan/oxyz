@@ -4,7 +4,8 @@ namespace App\Entity;
 class Product extends Entity
 {
     public function getKeyType() {
-        return 3;
+        $keystoreModel = $this->di['model.keystore'];
+        return $keystoreModel::TYPE_PRODUCT;
     }
 
     const KEY_NOTES        = 127;

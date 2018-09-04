@@ -1,0 +1,83 @@
+{% extends "@layout/layout.twig" %}
+{% set title = string('titles.order_view') %}
+{% set view_title = 1 %}
+{% block styles %}
+<link rel="stylesheet" href="{{ cssurl('sortable') }}" />
+{% endblock %}
+{% block scripts %}
+<script src="{{ jsurl('sortable') }}"></script>
+<script src="{{ jsurl('orders') }}"></script>
+<script>
+// TODO: Setup multiple enable and disable texts.
+const ENABLED_TEXT = "{{ string('buttons.delete') }}";
+const DISABLED_TEXT = "{{ string('buttons.delete_d') }}";
+</script>
+{% endblock %}
+{% block content %}
+{% if orders|length %}
+    <div class="section orders">
+    {% for order in orders %}
+    <div class="order">
+        {% set file = order.getFile() %}
+        {% set customer = order.getCustomer() %}
+        <div class="state">
+            <div class="col-1-4">{{ string('fields.state') }}</div>
+            <div class="col-3-4">{{ string('enum.pstate.'~order.state) }}</div>
+        </div>
+        <div class="product_id">
+            <div class="col-1-4">{{ string('fields.product_id') }}</div>
+            <div class="col-3-4">{{ products[order.product_id].name }}</div>
+        </div>
+        <div class="customer_note">
+            <div class="col-1-4">{{ string('fields.order.customer_note') }}</div>
+            <div class="col-3-4">{{ order.customer_note }}</div>
+        </div>
+        <div class="file_id">
+            <div class="col-1-4">{{ string('fields.file_id') }}</div>
+            <div class="col-3-4"><a href="{{ file.getServeUrl() }}" target="_blank">{{ file.getName() }}</a></div>
+        </div>
+        <div class="amount">
+            <div class="col-1-4">{{ string('fields.amount') }}</div>
+            <div class="col-3-4">{{ order.amount }}</div>
+        </div>
+        <div class="customer_phone">
+            <div class="col-1-4">{{ string('fields.customer.phone') }}</div>
+            <div class="col-3-4">{{ string('p') }}{{ customer.phone }}</div>
+        </div>
+        <div class="customer_name">
+            <div class="col-1-4">{{ string('fields.customer.name') }}</div>
+            <div class="col-3-4">{{ customer.name }}</div>
+        </div>
+        <div class="actions">
+            <div class="col-1-4">{{ string('fields.actions') }}</div>
+            <div class="col-3-4">
+                <form action="{{ url('order:edit', { order:order.id }) }}" method="POST" class="css__form">
+                    {{ csrf_token_input(url('file:delete', { file:file.salted_name }))|raw }}
+                    <button class="delete btn red tiny solid">{{ string('buttons.delete') }}</button>
+                </form>
+                {# View full data is here if list_keys is not present #}
+            </div>
+        </div>
+        {% if (list_keys) %}
+        <div class="keys">
+            <div class="col-1-4">{{ string('fields.keys') }}</div>
+            <div class="col-3-4">
+                {% set keys = order.keys %}
+                {% for key in keys %}
+                    {{ key.label }}={{
+                        keystore[key.description].value[key.value] is defined ?
+                        keystore[key.description].value[key.value] :
+                        key.value
+                    }}<br>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        <div class="clear"></div>
+    </div>
+    {% endfor %}
+    </div>
+{% else %}
+<div class="notice">There are no orders.</div>
+{% endif %}
+{% endblock %}
