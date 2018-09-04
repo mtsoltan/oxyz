@@ -1,0 +1,9 @@
+<div class="col-3-7">
+    <div class="feed-card">
+        {% if item.image %}
+            <img class="large"
+                src="{{ item.image }}"
+                alt="{{ string('site.title') }}">
+        {% endif %}
+    </div>
+</div>

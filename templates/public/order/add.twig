@@ -1,0 +1,23 @@
+{% extends "@layout/layout_form.twig" %}
+{% set title = string('titles.order_add', product.name) %}
+{% set target = url('order:handleAdd', {'product' : product.id}) %}
+{% set enctype = 'multipart/form-data' %}
+{% set csrf = 1 %}
+{% block styles %}
+<link rel="stylesheet" href="{{ cssurl('form') }}" />
+{% endblock %}
+{% block scripts %}
+<script>
+const ENABLED_TEXT = "{{ string('buttons.submit') }}";
+const DISABLED_TEXT = "{{ string('buttons.submit_d') }}";
+</script>
+<script src="{{ jsurl('service_form') }}"></script>
+{% endblock %}
+{% block form %}
+{{ form|raw }}
+<p>
+    <button type="submit" class="btn blue solid">{{ string('buttons.submit') }}</button>
+</p>
+<div class="clear"></div>
+<div class="js__progress-bar hidden"><div></div></div>
+{% endblock %}

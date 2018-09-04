@@ -1,0 +1,37 @@
+{% extends "@layout/public_links.twig" %}
+{% block private_links %}
+<li><a
+ href="{{ url('main:dashboard') }}"
+ class="arrow {{ title == string('titles.main_dashboard') ? 'here' : '' }}">
+    {{ string('titles.main_dashboard') }}
+ </a>
+ <ul>
+    {% if logged_user.hasPermission('file_edit') %}
+        <li><a
+         href="{{ url('file:upload') }}"
+         class="{{ title == string('titles.file_upload') ? 'here' : '' }}">
+            {{ string('titles.file_upload') }}
+         </a></li>
+        <li><a
+         href="{{ url('file:all') }}"
+         class="{{ title == string('titles.file_all') ? 'here' : '' }}">
+            {{ string('titles.file_all') }}
+         </a></li>
+    {% endif %}
+    {% if logged_user.hasPermission('user_add') %}
+        <li><a
+         href="{{ url('user:add') }}"
+         class="{{ title == string('titles.user_add') ? 'here' : '' }}">
+            {{ string('titles.user_add') }}
+         </a></li>
+    {% endif %}
+    {% if logged_user.hasPermission('user_edit') %}
+        <li><a
+         href="{{ url('user:all') }}"
+         class="{{ title == string('titles.user_all') ? 'here' : '' }}">
+            {{ string('titles.user_all') }}
+         </a></li>
+    {% endif %}
+ </ul>
+ </li>
+{% endblock %}

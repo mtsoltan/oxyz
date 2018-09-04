@@ -1,0 +1,8 @@
+{% extends "@layout/layout.twig" %}
+{% set title = string('titles.main_home') %}
+{% block content %}
+{% include '@public/home/banner.twig' %}
+{% include '@public/home/bullets.twig' %}
+{% include '@public/services/loop.twig' %}
+{% include '@public/home/maps.twig' %}
+{% endblock %}

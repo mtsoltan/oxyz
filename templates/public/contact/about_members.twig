@@ -1,0 +1,22 @@
+<div class="row bg">
+    <div class="section center">
+        <h1>{{ string('contact.who') }}</h1>
+        <hr class="small red">
+        {% for i in 1..string('contact.who.desc.size') %}
+        <div class="col-1-5 grid__person-card">
+            <div class="feed-card">
+                <p>
+                    <img class="round large"
+                        src="{{ imgurl(string('contact.who.desc.'~i~'.img')) }}"
+                        alt="{{ string('contact.who.desc.'~i~'.name') }}"><br>
+                    {{ string('contact.who.desc.'~i~'.name') }}<br>
+                    <small class="bold">
+                        {{ string('contact.who.desc.'~i~'.jobs')|split('|')|join('<br>')|raw }}
+                    </small>
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="clear"></div>
+    </div>
+</div>

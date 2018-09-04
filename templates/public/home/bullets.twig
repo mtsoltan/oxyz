@@ -1,0 +1,27 @@
+<div class="section padded">
+    <div class="col-1-2">
+        <h1 class="title__with-image">
+            <img src="{{ imgurl('what.png') }}"> <span>{{ string('home.what') }}</span>
+        </h1>
+        <p>
+        <ul class="list">
+            {% for item in string('home.what.desc')|split('|') %}
+            <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+        </p>
+    </div>
+    <div class="col-1-2">
+        <h1 class="title__with-image">
+            <img src="{{ imgurl('why.png') }}"> <span>{{ string('home.why') }}</span>
+        </h1>
+        <p>
+        <ul class="list">
+            {% for item in string('home.why.desc')|split('|') %}
+            <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+        </p>
+    </div>
+    <div class="clear"></div>
+</div>

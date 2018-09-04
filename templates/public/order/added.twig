@@ -1,0 +1,8 @@
+{% extends "@layout/layout.twig" %}
+{% set title = string('titles.order_added') %}
+{% set view_title = 1 %}
+{% block content %}
+    <p class="center"><a
+        href="{{ url('main:index') }}">
+        <button class="btn large solid red round">{{ string('buttons.home') }}</button></a></p>
+{% endblock %}

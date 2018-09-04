@@ -1,0 +1,8 @@
+{% extends "@layout/layout.twig" %}
+{% set title = string('titles.admin_reset') %}
+{% set view_title = 1 %}
+{% block content %}
+<pre>
+    {{ result is defined ? result : '' }}
+</pre>
+{% endblock %}

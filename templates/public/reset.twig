@@ -1,0 +1,19 @@
+{% extends "@layout/layout_form.twig" %}
+{% set title = string('titles.session_reset') %}
+{% set target = url('session:handleResetPassword') %}
+{% block form %}
+<div class="notice narrow">{{ string('descriptions.min_pass_length', min_pass_length) }}</div>
+<input type="hidden" value="{{ recovery_key }}" name="recovery_key">
+<input type="hidden" value="{{ keep_logged }}" name="keep_logged">
+<input type="hidden" value="{{ username }}" name="username">
+<p>
+    <input type="password" placeholder="{{ string('fields.user.password') }}"
+        name="password" pattern="{{ '.{' ~ min_pass_length ~ ',}' }}">
+    <input type="password" placeholder="{{ string('fields.user.password2') }}"
+        name="password2" pattern="{{ '.{' ~ min_pass_length ~ ',}' }}">
+</p>
+<p>
+    <button type="submit" class="btn blue solid">{{ string('buttons.login') }}</button>
+</p>
+<div class="clear"></div>
+{% endblock %}

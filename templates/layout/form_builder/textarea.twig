@@ -1,0 +1,9 @@
+{% extends "@layout/form_builder/input.twig" %}
+{% block input %}
+<textarea
+    {% for attribute,value in attributes %}
+        {% if attribute != 'type' %}
+            {{ attribute }}="{{ value }}"
+        {% endif %}
+    {% endfor %}>{{ attributes['value']|default('') }}</textarea>
+{% endblock %}

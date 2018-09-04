@@ -1,0 +1,22 @@
+<p>
+    <label
+        {% if attributes['id'] is defined %}
+            for="{{ attributes['id'] }}"
+        {% elseif key is defined %}
+            for="{{ key }}"
+        {% endif %}
+        >
+        <span class="form-builder__label">{{ label }}</span>
+        {% if description %}
+            <span class="form-builder__description">{{ description }}</span>
+        {% endif %}
+    </label>
+    <div class="clear"></div>
+    {% block input %}
+    <input
+        {% for attribute,value in attributes %}
+            {{ attribute }}="{{ value }}"
+        {% endfor %} />
+    {% endblock %}
+</p>
+{{ separator|raw }}

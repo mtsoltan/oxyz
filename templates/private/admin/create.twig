@@ -1,0 +1,15 @@
+{% extends "@layout/layout_form.twig" %}
+{% set title = string('titles.user_add') %}
+{% set target = url('user:handleAdd') %}
+{% set csrf = 1 %}
+{% block form %}
+<div class="notice">{{ string('descriptions.username_constraints')|raw }}</div>
+<p>
+    <input type="text" placeholder="{{ string('fields.user.username') }}" name="username" pattern="[0-9a-zA-Z]{1,20}">
+    <textarea placeholder="{{ string('fields.user.state_text.label') }}" name="state_text"></textarea>
+</p>
+<p>
+    <button type="submit" class="btn blue solid">{{ string('buttons.create') }}</button>
+</p>
+<div class="clear"></div>
+{% endblock %}

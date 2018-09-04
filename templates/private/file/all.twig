@@ -1,0 +1,63 @@
+{% extends "@layout/layout.twig" %}
+{% set title = string('titles.file_all') %}
+{% set view_title = 1 %}
+{% block styles %}
+<link rel="stylesheet" href="{{ cssurl('sortable') }}" />
+<link rel="stylesheet" href="{{ cssurl('files') }}" />
+{% endblock %}
+{% block scripts %}
+<script src="{{ jsurl('sortable') }}"></script>
+<script src="{{ jsurl('files') }}"></script>
+<script>
+    const DISABLED_TEXT = "{{ string('buttons.delete_d') }}";
+</script>
+{% endblock %}
+{% block content %}
+{% if files|length %}
+    <div class="notice narrow">{{ string('descriptions.copy') }}</div>
+    <div class="section center padded">
+        <table data-sortable class="files-table">
+            <thead>
+                <tr>
+                    <th class="name">{{ string('fields.file.name') }}</th>
+                    <th class="url">{{ string('fields.file.url') }}</th>
+                    <th class="fix"></th>
+                    <th class="size">{{ string('fields.file.size') }}</th>
+                    <th class="ext">{{ string('fields.file.ext') }}</th>
+                    <th class="fix"></th>
+                    <th class="size">{{ string('fields.file.uploader_ip') }}</th>
+                    <th class="ext">{{ string('fields.file.entity') }}</th>
+                    <th class="fix"></th>
+                    <th class="actions">{{ string('fields.actions') }}</th>
+                    <th data-sortable="false"></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for file in files %}
+                <tr>
+                    <td class="name"><a href="{{ file.getServeUrl() }}" target="_blank">{{ file.getName() }}</a></td>
+                    <td class="url"><span class="js__selectable">{{ file.getServeUrl(1) }}</span></td>
+                    <td class="fix"></td>
+                    <td class="size">{{ file.size }}{{ string('s') }}</td>
+                    <td class="ext">{{ file.ext }}</td>
+                    <td class="fix"></td>
+                    <td class="size">{{ file.uploader_ip }}</td>
+                    <td class="ext">{{ string('enum.file.entity_type.' ~ file.entity_type) }} #{{ file.entity_id }}</td>
+                    <td class="fix"></td>
+                    <td class="actions">
+                        <form action="{{ url('file:delete', { file:file.salted_name }) }}" method="POST" class="css__form">
+                            {{ csrf_token_input(url('file:delete', { file:file.salted_name }))|raw }}
+                            <button class="delete btn red small solid">{{ string('buttons.delete') }}</button>
+                        </form>
+                        <span class="fix"></span>
+                    </td>
+                    <td><span class="fix"></span></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+<div class="notice">You have no uploaded files.</div>
+{% endif %}
+{% endblock %}

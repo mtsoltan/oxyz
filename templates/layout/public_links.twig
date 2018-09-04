@@ -1,0 +1,34 @@
+<div class="row header">
+    <div class="section">
+        <nav>
+            <a href="{{ url('main:index') }}" class="logo"><img src="{{ imgurl('logo.png') }}"
+                alt="{{ string('site.title') }}"></a>
+            <label for="menu-toggle" id="menu-toggle-label"></label>
+            <input id="menu-toggle" type="checkbox">
+            <div class="icon-menu"></div>
+            <ul class="menu">
+                <li><a
+                 href="{{ url('main:contact') }}"
+                 class="{{ title == string('titles.main_contact') ? 'here' : '' }}">
+                    {{ string('titles.main_contact') }}
+                 </a></li>
+                 {# TODO: Gallery #}
+                <li class="hidden"><a
+                 href="{{ url('main:products') }}"
+                 class="{{ title == string('titles.main_products') ? 'here' : '' }}">
+                    {{ string('titles.main_products') }}
+                 </a></li>
+                <li><a
+                 href="{{ url('main:index') }}#services" class="js__services">
+                    {{ string('titles.main_services') }}
+                 </a></li>
+                 {% block private_links %}{% endblock %}
+                <li><a
+                 href="{{ url('main:index') }}"
+                 class="{{ title == string('titles.main_home') ? 'here' : '' }}">
+                    {{ string('titles.main_home') }}
+                 </a></li>
+            </ul>
+        </nav>
+    </div>
+</div>

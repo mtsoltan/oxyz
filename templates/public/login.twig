@@ -1,0 +1,13 @@
+{% extends "@layout/layout_form.twig" %}
+{% set title = string('titles.session_login') %}
+{% set target = url('session:handleLogin') %}
+{% block form %}
+<p>
+    <input type="text" placeholder="{{ string('fields.user.username') }}" name="username">
+    <input type="password" placeholder="{{ string('fields.user.password') }}" name="password">
+</p>
+<p>
+    <button type="submit" class="btn blue solid">{{ string('buttons.login') }}</button>
+</p>
+<div class="clear"></div>
+{% endblock %}

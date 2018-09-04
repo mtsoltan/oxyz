@@ -1,0 +1,19 @@
+<div class="row bg-blue light-text" id="services">
+    <div class="section narrow center">
+        <h1>
+            {{ string('services.title') }}
+        </h1>
+    </div>
+</div>
+<div class="row padded">
+    {% for item in services %}
+            <div class="row grid__service grid__{{ loop.index is odd ? 'left' : 'right' }}">
+                <div class="section">
+                    {% include '@public/services/desc.twig' %}
+                    {% include '@public/services/card.twig' %}
+                    <div class="clear"></div>
+                </div>
+            </div>
+    {% endfor %}
+    <div class="clear"></div>
+</div>

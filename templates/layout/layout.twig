@@ -1,0 +1,39 @@
+{# Blocks content|scripts|styles Variables title|view_title|sidebar} #}
+{% set logged_user = user() %}
+{% set top_bar = 1 %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <title>{{ string('site.title') }} - {{ title }}</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="icon" href="/favicon.png" type="image/x-icon">
+        <link rel="stylesheet" href="{{ cssurl('vital') }}" />
+        <link rel="stylesheet" href="{{ cssurl('override') }}" />
+        <link rel="stylesheet" href="{{ cssurl('main') }}" />
+        {% if logged_user %}<style></style>{% endif %}
+        <script src="{{ jsurl('jquery') }}"></script>
+        <script src="{{ jsurl('main') }}"></script>
+        {% block styles %}{% endblock %}
+    </head>
+    <body>
+        {% include '@layout/flash.twig' %}
+        {% if top_bar %}
+            <div class="layout__links-wrapper">
+            {% if logged_user %}
+                {% include '@layout/private_links.twig' %}
+            {% else %}
+                {% include '@layout/public_links.twig' %}
+            {% endif %}
+            </div>
+        {% endif %}
+        <div class="contents">
+            {% if view_title is defined %}
+            <h2 class="center layout__main-title">{{ title }}</h3>
+            {% endif %}
+            {% block content %}{% endblock %}
+        </div>
+        {% include '@layout/footer.twig' %}
+        {% block scripts %}{% endblock %}
+    </body>
+</html>

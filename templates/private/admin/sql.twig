@@ -1,0 +1,18 @@
+{% extends "@layout/layout_form.twig" %}
+{% set title = string('titles.admin_sql') %}
+{% set target = url('admin:handleSql') %}
+{% set layout = 3 %}
+{% set csrf = 1 %}
+{% block form %}
+<p>
+    <textarea placeholder="{{ string('fields.sql') }}" name="sql">{{ input is defined ? input : '' }}</textarea>
+</p>
+<p>
+    <button type="submit" class="btn blue solid">{{ string('buttons.submit') }}</button>
+</p>
+<div class="clear"></div>
+<pre>
+    {{ result is defined ? result : '' }}
+</pre>
+<div class="clear"></div>
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends "@layout/form_builder/input.twig" %}
+{% block input %}
+<select name="{{ key }}" id="{{ key }}" required>
+{% for value,text in attributes %}
+    <option value="{{ value }}" {{ loop.index == 1 ? 'selected' : '' }}>{{ text }}</option>
+{% endfor %}
+</select>
+{% endblock %}

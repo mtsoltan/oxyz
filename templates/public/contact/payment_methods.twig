@@ -1,0 +1,15 @@
+<div class="row bg-white">
+    <div class="section center">
+        <h1>{{ string('contact.pay') }}</h1>
+        <hr class="red small">
+        <div class="autogrid padded">
+        {% for i in 1..3 %} 
+            <div class="col">
+                <img src="{{ imgurl(string('contact.pay.'~i~'.img')) }}">
+                <h2>{{ string('contact.pay.'~i~'.h2') }}</h2>
+                <p>{{ string('contact.pay.'~i~'.p')|split('|')|join('<br>')|raw }}</p>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>

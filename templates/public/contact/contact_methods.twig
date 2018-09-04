@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="section center">
+        <h1>{{ string('contact.how') }}</h1>
+        <hr class="red small">
+        <div class="autogrid padded">
+            <div class="col">
+                <i class="fas fa-address-card fa-4x"></i>
+                <h2>{{ string('contact.phone') }}</h2>
+                <p>{{ string('contact.phone.value')|split('|')|join('<br>')|raw }}</p>
+            </div>
+            <div class="col">
+                <i class="fas fa-map-marker-alt fa-4x"></i>
+                <h2>{{ string('contact.location') }}</h2>
+                <p>
+                    {{ string('home.where.desc') }}<br><br>
+                    <a href="{{ string('site.gmap') }}">
+                        <button class="btn red round">{{ string('contact.location.gmap') }}</button>
+                    </a>
+                </p>
+            </div>
+            <div class="col">
+                <i class="fas fa-envelope fa-4x"></i>
+                <h2>{{ string('contact.email') }}</h2>
+                <p>{% include '@layout/mailto.twig' %}</p>
+            </div>
+        </div>
+    </div>
+</div>

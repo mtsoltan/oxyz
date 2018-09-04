@@ -1,0 +1,19 @@
+{% extends "@layout/layout.twig" %}
+{% set title = string('titles.TITLE') %}
+{% block scripts %}
+<script>
+    /* Inline Script */
+</script>
+<script src="{{ jsurl('script_name') }}"></script>
+{% endblock %}
+{% block styles %}
+<style>
+    /* Inline Style */
+</style>
+<link rel="stylesheet" href="{{ cssurl('style_name') }}" />
+{% endblock %}
+{% block content %}
+<div class="l_content">
+    {# Content Goes Here #}
+</div>
+{% endblock %}

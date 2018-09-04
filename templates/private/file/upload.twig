@@ -1,0 +1,28 @@
+{% extends "@layout/layout_form.twig" %}
+{% set title = string('titles.file_upload') %}
+{% set target = url('file:handleUpload') %}
+{% set enctype = 'multipart/form-data' %}
+{% set csrf = 1 %}
+{% block scripts %}
+<script>
+const ENABLED_TEXT = "{{ string('buttons.upload') }}";
+const DISABLED_TEXT = "{{ string('buttons.upload_d') }}";
+const FILE_LIMIT = "{{ string('notices.file_limit') }}";
+</script>
+<script src="{{ jsurl('upload') }}"></script>
+{% endblock %}
+{% block form %}
+<div class="notice">{{ string('descriptions.max_size', config('site.max_filesize')) }}</div>
+<p><input type="file" class="js__upload-input" name="file[]" multiple></p>
+<p>
+    <label for="url">{{ string('fields.file.url.label') }}</label>
+    <input name="url" type="text" id="url" size="46" />
+</p>
+<p>
+    <button type="submit" class="btn blue solid">{{ string('buttons.upload') }}</button>
+</p>
+<div class="clear"></div>
+<div id="upload-queue"></div>
+<div class="clear"></div>
+<div class="js__progress-bar hidden"><div></div></div>
+{% endblock %}

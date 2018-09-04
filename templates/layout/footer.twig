@@ -1,0 +1,30 @@
+<div class="layout__footer js__footer bg-black">
+    {% if logged_user %}
+        {{ string('descriptions.footer_in') }} |
+        {% include '@layout/mailto.twig' %} |
+        {% if logged_user.hasPermission('root') %}
+            <a
+             href="{{ url('admin:sql') }}"
+             class="{{ title == string('titles.admin_sql') ? 'here' : '' }}">
+                {{ string('titles.admin_sql') }}
+             </a> |
+            <a
+             onclick="return confirm('{{ string('confirms.reset') }}');"
+             href="{{ url('admin:reset') }}"
+             class="{{ title == string('titles.admin_reset') ? 'here' : '' }}">
+                {{ string('titles.admin_reset') }}
+             </a> |
+        {% endif %}
+        <a href="{{ url('session:logout') }}">{{ string('titles.session_logout') }}</a>
+    {% else %}
+        {{ string('descriptions.footer_out') }} |
+        {% include '@layout/mailto.twig' %} |
+        <a href="{{ url('session:login') }}">{{ string('titles.session_login') }}</a>
+    {% endif %}
+</div>
+<script>
+$footer = $('.js__footer');
+if ($footer.offset().top - $(window).height() < -40) {
+    $footer.css({ 'bottom' : 0});
+}
+</script>
