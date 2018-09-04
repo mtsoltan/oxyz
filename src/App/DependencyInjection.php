@@ -71,7 +71,7 @@ class DependencyInjection
             return new \Slim\Flash\Messages();
         };
 
-        $strings = new \App\Utilities\String($di);
+        $strings = new \App\Utilities\StringUtils($di);
         $strings->injectStrings($di, ['strings', 'forms']);
         unset($strings);
 
@@ -163,7 +163,7 @@ class DependencyInjection
         return new \App\Utilities\Time($di);
     };
     $di['utility.string'] = function ($di) {
-        return new \App\Utilities\String($di);
+        return new \App\Utilities\StringUtils($di);
     };
     $di['utility.file'] = function ($di) {
         return new \App\Utilities\File($di);

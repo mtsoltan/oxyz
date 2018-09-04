@@ -2,7 +2,7 @@
 
 namespace App\Utilities;
 
-class String
+class StringUtils
 {
     private $store;
     private $storeKey = 'lang';
