@@ -1,6 +1,14 @@
 {% extends "@layout/layout_form.twig" %}
 {% set title = string('titles.session_reset') %}
 {% set target = url('session:handleResetPassword') %}
+{% block scripts %}
+<script>
+const DISABLED_TEXT = "{{ string('buttons.login_d') }}";
+$('form').on('submit', function(){
+    $('button[type=submit]').attr({'disabled':'disabled'}).text(DISABLED_TEXT);
+});
+</script>
+{% endblock %}
 {% block form %}
 <div class="notice narrow">{{ string('descriptions.min_pass_length', min_pass_length) }}</div>
 <input type="hidden" value="{{ recovery_key }}" name="recovery_key">

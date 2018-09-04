@@ -70,6 +70,7 @@ var XHRForm = function (formElement) {
     };
     _THIS.submit = function (logResponse = false) {
         _THIS._data.append('jsenabled', 'true');
+        $('button[type=submit]', _THIS._form).attr({'disabled':'disabled'}).text(DISABLED_TEXT);
         _THIS._xhr = new XMLHttpRequest();
         if (_THIS.onprogress && _THIS.onprogress.call) _THIS._xhr.upload.addEventListener('progress', function (event) {
             _THIS.onprogress.call(_THIS._xhr, event);

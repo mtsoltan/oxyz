@@ -3,19 +3,7 @@ $(function () {
     $form = $('form');
     $form.submit(function(ev){
         ev.preventDefault();
-        $('button[type=submit]', $form).attr({'disabled':'disabled'}).text(DISABLED_TEXT);
         handler = new XHRForm(this);
-        handler.onsuccess = function (json) {
-            $('button[type=submit]', $form).removeAttr('disabled').text(ENABLED_TEXT);
-            if (json.location)
-                window.location = json.location;
-            if (json.error)
-                $('.js-flash').html(`<div class="alert alert-danger">${json.error}</div>`);
-        };
-        handler.onerror = function (json) {
-            $('button[type=submit]', $form).removeAttr('disabled').text(ENABLED_TEXT);
-            $('.js-flash').html(`<div class="alert alert-danger">${json.error}</div>`);
-        };
         handler.onprogress = function (evt) {
             $('.js__progress-bar').removeClass('hidden');
             if (evt.lengthComputable) {

@@ -3,6 +3,14 @@
 {% set target = url('admin:handleSql') %}
 {% set layout = 3 %}
 {% set csrf = 1 %}
+{% block scripts %}
+<script>
+const DISABLED_TEXT = "{{ string('buttons.submit_d') }}";
+$('form').on('submit', function(){
+    $('button[type=submit]').attr({'disabled':'disabled'}).text(DISABLED_TEXT);
+});
+</script>
+{% endblock %}
 {% block form %}
 <p>
     <textarea placeholder="{{ string('fields.sql') }}" name="sql">{{ input is defined ? input : '' }}</textarea>

@@ -14,8 +14,8 @@
          </a></li>
         <li><a
          href="{{ url('file:all') }}"
-         class="{{ title == string('titles.file_all') ? 'here' : '' }}">
-            {{ string('titles.file_all') }}
+         class="{{ title == string('titles.file_view') ? 'here' : '' }}">
+            {{ string('titles.file_view') }}
          </a></li>
     {% endif %}
     {% if logged_user.hasPermission('user_add') %}
@@ -28,8 +28,8 @@
     {% if logged_user.hasPermission('user_edit') %}
         <li><a
          href="{{ url('user:all') }}"
-         class="{{ title == string('titles.user_all') ? 'here' : '' }}">
-            {{ string('titles.user_all') }}
+         class="{{ title == string('titles.user_view') ? 'here' : '' }}">
+            {{ string('titles.user_view') }}
          </a></li>
     {% endif %}
  </ul>

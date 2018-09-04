@@ -1,6 +1,14 @@
 {% extends "@layout/layout_form.twig" %}
 {% set title = string('titles.session_login') %}
 {% set target = url('session:handleLogin') %}
+{% block scripts %}
+<script>
+const DISABLED_TEXT = "{{ string('buttons.login_d') }}";
+$('form').on('submit', function(){
+    $('button[type=submit]').attr({'disabled':'disabled'}).text(DISABLED_TEXT);
+});
+</script>
+{% endblock %}
 {% block form %}
 <p>
     <input type="text" placeholder="{{ string('fields.user.username') }}" name="username">

@@ -2,7 +2,6 @@ $(function () {
     $form = $('form');
     $form.submit(function(ev){
         ev.preventDefault();
-        $('button[type=submit]', $form).attr({'disabled':'disabled'}).text(DISABLED_TEXT);
         handler = new XHRForm(this);
         handler.onprogress = function (evt) {
             $('.js__progress-bar').removeClass('hidden');

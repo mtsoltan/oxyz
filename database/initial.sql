@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `sessions` (
   KEY `user_id` (`user_id`)
   ) ENGINE=InnoDB CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS `session_data` (
+CREATE TABLE IF NOT EXISTS `session_data` ( -- TODO: Check integrity and usage of this table.
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `session_id` CHAR(32),
   `last_update` INT UNSIGNED NOT NULL,

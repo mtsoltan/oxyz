@@ -15,7 +15,7 @@ class UserCtrl extends BaseCtrl
      * @return \Slim\Http\Response The rendered view.
      */
     public function add($request, $response, $args) {
-        return $this->view->render($response, '@private/admin/create.twig');
+        return $this->view->render($response, '@private/user/add.twig');
     }
 
     /**

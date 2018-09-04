@@ -2,6 +2,14 @@
 {% set title = string('titles.user_add') %}
 {% set target = url('user:handleAdd') %}
 {% set csrf = 1 %}
+{% block scripts %}
+<script>
+const DISABLED_TEXT = "{{ string('buttons.create_d') }}";
+$('form').on('submit', function(){
+    $('button[type=submit]').attr({'disabled':'disabled'}).text(DISABLED_TEXT);
+});'
+</script>
+{% endblock %}
 {% block form %}
 <div class="notice">{{ string('descriptions.username_constraints')|raw }}</div>
 <p>

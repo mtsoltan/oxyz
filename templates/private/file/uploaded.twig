@@ -3,17 +3,16 @@
 {% set view_title = 1 %}
 {% block styles %}
 <link rel="stylesheet" href="{{ cssurl('sortable') }}" />
-<link rel="stylesheet" href="{{ cssurl('files') }}" />
+<link rel="stylesheet" href="{{ cssurl('table') }}" />
 {% endblock %}
 {% block scripts %}
 <script src="{{ jsurl('sortable') }}"></script>
-<script src="{{ jsurl('files') }}"></script>
 {% endblock %}
 {% block content %}
 {% if files|length %}
     <div class="notice narrow">{{ string('descriptions.copy') }}</div>
     <div class="section center padded">
-        <table data-sortable class="files-table">
+        <table data-sortable class="admin-table">
             <thead>
                 <tr>
                     <th class="name">{{ string('fields.file.name') }}</th>
