@@ -1,0 +1,54 @@
+.files-table, .files-table td, .files-table th {
+    border-collapse: collapse;
+}
+.files-table td, .files-table th {
+    border: 1px solid #a8b2bd;
+    max-height: 36px;
+    height: 36px;
+    padding: 10px;
+    overflow: hidden;
+}
+.files-table {
+    text-align: left;
+    display: inline-block;
+    margin: auto;
+    max-width: 100%;
+    font-size: 12px;
+    overflow-x: auto;
+    border-bottom: 1px solid #a8b2bd;
+    border-left: 1px solid #a8b2bd;
+}
+.files-table thead {
+    top: 0;
+    text-align: center;
+}
+.files-table tbody tr:nth-child(odd) { background-color: #f0f0f0; }
+.files-table tbody tr:hover { background-color: #e8f2fd; }
+
+.files-table td, .files-table th {
+    display: block;
+    border-width: 1px 1px 0 0;
+}
+
+.files-table td.fix, .files-table th.fix {
+    display: table-cell;
+    width: 0; min-width: 0; max-width: 0;
+    padding: 0; margin: 0; border: none;
+}
+.files-table span.fix {
+    font-size: 0;
+}
+.files-table span.fix:after {
+    content: ".";
+}
+.files-table td.actions form {
+    position: absolute;
+}
+.files-table td.size,
+.files-table td.ext { text-align: right; }
+
+.filters th input {
+    display: table-cell;
+    width: 100%;
+    margin-right:-3px;
+}

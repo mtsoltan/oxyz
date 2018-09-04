@@ -1,0 +1,17 @@
+.form-builder__label {
+    font-family: "Montserrat";
+    font-weight: 400;
+    font-size: 1.17em;
+    display: block;
+    margin-bottom: 0.4em;
+}
+.form-builder__description {
+    font-size: 0.7em;
+    display: block;
+}
+.css__form input.filled:valid {
+    border-left: 4px solid #0f0;
+}
+.css__form input.filled:invalid {
+    border-left: 4px solid #f00;
+}

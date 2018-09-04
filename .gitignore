@@ -1,0 +1,44 @@
+# dev stuff (IDE configs etc)
+**/.idea/
+**/composer.phar
+**/nbproject/
+**/.vagrant/
+**/.buildpath/
+**/.project/
+**/.settings/
+**/desktop.ini
+**/.buildpath
+**/.project
+**/.well-known/
+
+# general extensions of files we dont want
+*.log
+*.db
+*.html
+*.min.css
+*.min.js
+*.online
+*.orig
+todo
+
+# CDN served files and fonts
+**/public/static/images/
+**/public/static/webfonts/
+
+# dynamic vendor stuff
+**/vendor/
+**/node_modules/
+**/letsencrypt/
+composer.lock
+composer.phar
+
+# project dirs
+**/__*/
+**/logs/*
+**/tmp/*
+**/sessions/*
+**/files/*
+
+# project files
+private.ini
+*.sql.offline

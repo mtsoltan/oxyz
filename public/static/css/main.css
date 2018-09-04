@@ -1,0 +1,113 @@
+* {
+    box-sizing: border-box;
+}
+.alert { text-align: center; }
+alert:not(:first-child) {
+    border-top: 1px solid #999;
+}
+.alert-danger {
+    background-color: #ffdfdf;
+    color: #6f0b0f;
+}
+.alert-success {
+    background-color: #dfffdf;
+    color: #0b6f0f;
+}
+body {
+    color: #232323;
+    background-color: #FAFAFA;
+    font-family: 'Open Sans', sans-serif;
+}
+pre {
+    text-align: left;
+}
+.contents a, .contents a:visited {
+    color: #4f7c92;
+    text-decoration: none;
+    cursor: pointer;
+}
+img {
+    max-width: 100%;
+}
+h1,h2,h3,h4,h5 { font-family: "Montserrat";}
+.hidden { display: none; }
+.layout__links-wrapper {
+    box-shadow: 0px 2px 12px 2px rgba(0,0,0,0.25);
+    position: relative;
+    width: 100%;
+    height: 4.25em;
+}
+.layout__main-title {
+    margin-top: 2em;
+}
+.title__with-image span {
+    display: inline-block;
+    padding-top: 10px;
+    padding-left: 30px;
+}
+.title__with-image img {
+    float: left;
+}
+.grid__person-card img {
+    max-width: 100px;
+}
+.grid__service.grid__left div[class*='col-'] {
+    float: left;
+}
+.grid__service.grid__right div[class*='col-'] {
+    float: right;
+}
+.grid__service .feed-card {
+    width: 100%;
+}
+.grid__service:nth-child(2n) .feed-card {
+    transform: rotateZ(2deg);
+}
+.grid__service:nth-child(2n+1) .feed-card {
+    transform: rotateZ(-2deg);
+}
+.floated { float: left; }
+.align__left { text-align: left; }
+.layout__footer {
+    position: absolute;
+    height: 40px;
+    width: 100%;
+    text-align: center;
+    color: #e9e9e9;
+    padding: 10px;
+}
+.bg__banner {
+    background-image: url('/static/images/banner.jpg?t=1');
+    background-repeat: no-repeat;
+}
+.flash__alert {
+    padding: 10px 20px;
+    display: block;
+    border-bottom: 2px solid #000;
+}
+.flash__alert.alert-danger {
+    color: #700;
+    background-color: #faa;
+    border-color: #700;
+}
+.flash__alert.alert-success {
+    color: #070;
+    background-color: #afa;
+    border-color: #070;
+}
+.js__progress-bar {
+    height: 1em;
+    background: #c4c4c4;
+    border-radius: 100em;
+}
+
+.js__progress-bar div {background: linear-gradient(to top, #142e6c, #1c4197);height: 100%;border-radius: 100em;}
+.js__selectable {
+    -webkit-user-select: all;
+    -moz-user-select: all;
+    -ms-user-select: all;
+    user-select: all;
+    border: 2px dotted #232323;
+    padding: 4px;
+    line-height: 1;
+}

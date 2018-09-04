@@ -1,0 +1,15 @@
+Order deny,allow
+Allow from all
+
+<FilesMatch "\.(?i:gif|jpe?g|png|ico|css|js)$">
+  <IfModule mod_headers.c>
+    Header set Cache-Control "max-age=2592000, public, must-revalidate"
+  </IfModule>
+</FilesMatch>
+
+# Turn on RewriteEngine
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [QSA,L]
