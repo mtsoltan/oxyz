@@ -40,6 +40,16 @@ h1,h2,h3,h4,h5 { font-family: "Montserrat";}
 .layout__main-title {
     margin-top: 2em;
 }
+.layout__align-left { text-align: left; }
+.layout__inline { display: inline-block; }
+.layout__footer {
+    position: absolute;
+    height: 40px;
+    width: 100%;
+    text-align: center;
+    color: #e9e9e9;
+    padding: 10px;
+}
 .title__with-image span {
     display: inline-block;
     padding-top: 10px;
@@ -66,16 +76,6 @@ h1,h2,h3,h4,h5 { font-family: "Montserrat";}
 .grid__service:nth-child(2n+1) .feed-card {
     transform: rotateZ(-2deg);
 }
-.floated { float: left; }
-.align__left { text-align: left; }
-.layout__footer {
-    position: absolute;
-    height: 40px;
-    width: 100%;
-    text-align: center;
-    color: #e9e9e9;
-    padding: 10px;
-}
 .bg__banner {
     background-image: url('/static/images/banner.jpg?t=1');
     background-repeat: no-repeat;
@@ -100,8 +100,10 @@ h1,h2,h3,h4,h5 { font-family: "Montserrat";}
     background: #c4c4c4;
     border-radius: 100em;
 }
-
-.js__progress-bar div {background: linear-gradient(to top, #142e6c, #1c4197);height: 100%;border-radius: 100em;}
+.js__progress-bar div {
+    background: linear-gradient(to top, #142e6c, #1c4197);
+    height: 100%;border-radius: 100em;
+}
 .js__selectable {
     -webkit-user-select: all;
     -moz-user-select: all;
@@ -117,15 +119,6 @@ span.fix {
 span.fix:after {
     content: ".";
 }
-.order {
-    border-left: 1px solid #000;
-    border-right: 1px solid #000;
-}
-.order > div {
-    padding: 0 2em 0 2em;
-    border-top: 1px solid #000;
-    clear: both;
-}
-.customer_note .col-3-4 {
+.css__pre {
     white-space: pre-wrap;
 }

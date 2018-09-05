@@ -1,0 +1,18 @@
+.orders {
+    font-size: 75%;
+}
+
+.order {
+    border-left: 1px solid #000;
+    width: 50%;
+    margin-bottom: 1em;
+}
+.order:nth-child(2n), .order:last-child {
+    border-right: 1px solid #000;
+}
+.order > div {
+    padding: 0 2em 0 2em;
+    border-top: 1px solid #000;
+    clear: both;
+}
+.note textarea { width: 100%; }
