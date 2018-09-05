@@ -6,7 +6,7 @@ class User extends Entity
     const PERMISSIONS = [
         0x000001 => 'user_edit',
         0x000002 => 'file_edit',
-        0x000004 => '0x000004',
+        0x000004 => 'order_edit',
         0x000008 => '0x000008',
         0x000010 => '0x000010',
         0x000020 => '0x000020',

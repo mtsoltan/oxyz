@@ -39,8 +39,6 @@ class Main extends Base
             $this->group('', function () {
                 $this->get('/logout', SessionCtrl::class.':logout')->setName('session:logout');
                 $this->get('/dashboard', MainCtrl::class.':dashboard')->setName('main:dashboard');
-                $this->get('/orders', OrderCtrl::class.':all')->setName('order:all');
-                $this->post('/orders', OrderCtrl::class.':edit')->setName('order:edit');
             })->add($this->access()->ensureLoggedIn());
 
             // Admin Routes
@@ -48,6 +46,11 @@ class Main extends Base
                 $this->get('/users', UserCtrl::class.':all')->setName('user:all'); // 0% Allows searching and filtering users.
                 $this->get('/user/edit/{user:[0-9]+}', UserCtrl::class.':edit')->setName('user:edit'); // 0%
             })->add($this->access()->requirePermission('user_edit'));
+
+            $this->group('/admin', function () {
+                $this->get('/orders', OrderCtrl::class.':all')->setName('order:all');
+                $this->post('/orders/{order:[0-9]+}', OrderCtrl::class.':edit')->setName('order:edit');
+            })->add($this->access()->requirePermission('order_edit'));
 
             $this->group('/admin', function () {
                 $this->get('/files', FileCtrl::class.':all')->setName('file:all');
@@ -66,7 +69,7 @@ class Main extends Base
                 $this->get('/reset', AdminCtrl::class.':reset')->setName('admin:reset');
                 $this->get('/sql', AdminCtrl::class.':sql')->setName('admin:sql');
                 $this->post('/sql', AdminCtrl::class.':handleSql')->setName('admin:handleSql');
-            });//->add($this->access()->requirePermission('root'));
+            })->add($this->access()->requirePermission('root'));
         });
     }
 }

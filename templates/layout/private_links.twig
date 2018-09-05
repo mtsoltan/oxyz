@@ -6,6 +6,13 @@
     {{ string('titles.main_dashboard') }}
  </a>
  <ul>
+    {% if logged_user.hasPermission('order_edit') %}
+        <li><a
+         href="{{ url('order:all') }}"
+         class="{{ title == string('titles.order_view') ? 'here' : '' }}">
+            {{ string('titles.order_view') }}
+         </a></li>
+    {% endif %}
     {% if logged_user.hasPermission('file_edit') %}
         <li><a
          href="{{ url('file:upload') }}"
