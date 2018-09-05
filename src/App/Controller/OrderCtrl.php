@@ -12,6 +12,7 @@ class OrderCtrl extends BaseCtrl
      * @return \Slim\Http\Response The rendered view.
      */
     public function all($request, $response, $args) {
+        $orderModel = $this->di['model.order'];
         $data = [];
         if (!is_null($product_id = $request->getQueryParam('product_id'))) {
             if (ctype_digit("$product_id")) {
@@ -23,27 +24,40 @@ class OrderCtrl extends BaseCtrl
                 $data['state'] = $state;
             }
         }
-        $listKeys = $request->getQueryParam('listkeys');
-        $orders = $this->di['model.order']->getByEntityData($data);
+        if (!$data) {
+            $data = ['state' => $orderModel::STATE_PENDING];
+            $listKeys = 1;
+        } else  {
+            $listKeys = $request->getQueryParam('listkeys');
+        }
+
+        $orders = $orderModel->getByEntityData($data);
         if (!isset($data['product_id']))
             $products = $this->di['model.product']->getAllServices(); // Including disabled.
         else
             $products = [$this->di['model.product']->getById($data['product_id'])];
-            $productsKeyed = [];
-            foreach ($products as $product) {
-                $productsKeyed[$product->id] = $product;
-            }
-            $keystores = $this->di['model.keystore']->getByEntityData(['entity_type' => $products[0]->getKeyType()]);
-            $keystoresKeyed = [];
-            foreach ($keystores as $keystore) {
-                $keystoresKeyed[$keystore->id] = $keystore;
-            }
+
+        $productsKeyed = [];
+        foreach ($products as $product) {
+            $productsKeyed[$product->id] = $product;
+        }
+        $keystores = $this->di['model.keystore']->getByEntityData(['entity_type' => $products[0]->getKeyType()]);
+        $keystoresKeyed = [];
+        foreach ($keystores as $keystore) {
+            $keystoresKeyed[$keystore->id] = $keystore;
+        }
 
         return $this->view->render($response, '@private/order/all.twig', array(
             'orders' => $orders,
             'products' => $productsKeyed,
             'keystore' => $keystoresKeyed,
             'list_keys' => $listKeys ? true : false,
+            'states' => [
+                'pending' => $orderModel::STATE_PENDING,
+                'cancelled' => $orderModel::STATE_CANCELLED,
+                'finalized' => $orderModel::STATE_FINALIZED,
+                'rolled' => $orderModel::STATE_ROLLED,
+            ],
         ));
     }
 
@@ -54,13 +68,14 @@ class OrderCtrl extends BaseCtrl
      * @param array $args Not used.
      * @return \Slim\Http\Response The rendered view.
      */
-    public function delete($request, $response, $args) {
-        $fileModel = $this->di['model.file'];
+    public function edit($request, $response, $args) {
+        // TODO: Finalizing deletes file
+        $orderModel = $this->di['model.order'];
         $user = $this->di['user'];
         $strings = $this->di['strings'];
         $data = $request->getParsedBody();
         $handler = new \App\Utilities\Handler($this->di, $request);
-        $handler->setReferer($this->view_functions->pathFor('file:user'));
+        $handler->setReferer($this->view_functions->pathFor('order:all'));
 
         // Validate CSRF
         if (!$this->doSimpleValidation($request, true)) {
@@ -72,24 +87,35 @@ class OrderCtrl extends BaseCtrl
         }
 
         // Validate Field Presence
-        $hash = isset($args['file']) ? $args['file'] : false;
-        if (!$hash) {
-            return $handler->respondWithError($strings[''], $response);
+        $order = $orderModel->getById(isset($args['order']) ? $args['order'] : 0);
+        if (!$order) {
+            return $handler->respondWithError($this->di['strings.forms']['required.all'], $response);
         }
 
-        $file = $fileModel->getByHash($hash);
-        if (!$file) {
-            return $handler->respondWithError($strings['notices.file_delnotfound'], $response);
+        // Check what type of request this is and perform action.
+        $action = isset($data['action']) ? $data['action'] : '';
+
+        switch ($data['action']) {
+            case 'note':
+                if(isset($data['note'])) { // XSS vector here.
+                    $order->note = $data['note']; // No htmlspecialchars, and we display raw.
+                    $order = $order->save();
+                    return $handler->respondWithJson(array(
+                        'note' => $order->note,
+                    ), $response);
+                }
+                break;
+            case 'finalize':
+                break;
+            case 'cancel':
+                break;
+            case 'roll':
+                break;
+            case 'blacklist':
+                break;
+            default:
+                return $handler->respondWithError($this->di['strings.forms']['required.all'], $response);
         }
-
-        $onlyOwner = count($fileModel->getByHash($file->hash)) == 1;
-        if($onlyOwner) $file->deleteFromDisk();
-
-        $file->delete();
-
-        return $handler->respondWithJson(array(
-            'success' => $strings['notices.action_success']
-        ), $response);
     }
 
     /**

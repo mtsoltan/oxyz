@@ -2,35 +2,40 @@
 {% set title = string('titles.order_view') %}
 {% set view_title = 1 %}
 {% block styles %}
-<link rel="stylesheet" href="{{ cssurl('sortable') }}" />
+<link rel="stylesheet" href="{{ cssurl('orders') }}" />
 {% endblock %}
 {% block scripts %}
 <script src="{{ jsurl('sortable') }}"></script>
 <script src="{{ jsurl('orders') }}"></script>
 <script>
 // TODO: Setup multiple enable and disable texts.
-const ENABLED_TEXT = "{{ string('buttons.delete') }}";
-const DISABLED_TEXT = "{{ string('buttons.delete_d') }}";
+const SUBMIT_DISABLED_TEXT = "{{ string('buttons.submit_d') }}";
 </script>
 {% endblock %}
 {% block content %}
 {% if orders|length %}
     <div class="section orders">
     {% for order in orders %}
-    <div class="order">
+    <div class="order col-1-2">
         {% set file = order.getFile() %}
         {% set customer = order.getCustomer() %}
         <div class="state">
             <div class="col-1-4">{{ string('fields.state') }}</div>
-            <div class="col-3-4">{{ string('enum.pstate.'~order.state) }}</div>
+            <div class="col-3-4">
+                {{ string('enum.pstate.'~order.state) }}&nbsp;
+                <form action="{{ url('order:edit', { order:order.id }) }}" method="POST" class="layout__inline css__form js__actions-form">
+                    {{ csrf_token_input(url('order:edit', { order:order.id }))|raw }}
+                    <button type="submit" id="finalize" class="btn blue tiny solid">{{ string('buttons.finalize') }}</button>
+                    <button type="submit" id="cancel" class="btn red tiny solid">{{ string('buttons.cancel') }}</button>
+                    <button type="submit" id="roll" class="btn red tiny solid">{{ string('buttons.roll') }}</button>
+                    <button type="submit" id="blacklist" class="btn red tiny solid">{{ string('buttons.blacklist') }}</button>
+                </form>
+                {# View full data is here if list_keys is not present #}
+            </div>
         </div>
         <div class="product_id">
             <div class="col-1-4">{{ string('fields.product_id') }}</div>
             <div class="col-3-4">{{ products[order.product_id].name }}</div>
-        </div>
-        <div class="customer_note">
-            <div class="col-1-4">{{ string('fields.order.customer_note') }}</div>
-            <div class="col-3-4">{{ order.customer_note }}</div>
         </div>
         <div class="file_id">
             <div class="col-1-4">{{ string('fields.file_id') }}</div>
@@ -39,24 +44,6 @@ const DISABLED_TEXT = "{{ string('buttons.delete_d') }}";
         <div class="amount">
             <div class="col-1-4">{{ string('fields.amount') }}</div>
             <div class="col-3-4">{{ order.amount }}</div>
-        </div>
-        <div class="customer_phone">
-            <div class="col-1-4">{{ string('fields.customer.phone') }}</div>
-            <div class="col-3-4">{{ string('p') }}{{ customer.phone }}</div>
-        </div>
-        <div class="customer_name">
-            <div class="col-1-4">{{ string('fields.customer.name') }}</div>
-            <div class="col-3-4">{{ customer.name }}</div>
-        </div>
-        <div class="actions">
-            <div class="col-1-4">{{ string('fields.actions') }}</div>
-            <div class="col-3-4">
-                <form action="{{ url('order:edit', { order:order.id }) }}" method="POST" class="css__form">
-                    {{ csrf_token_input(url('file:delete', { file:file.salted_name }))|raw }}
-                    <button class="delete btn red tiny solid">{{ string('buttons.delete') }}</button>
-                </form>
-                {# View full data is here if list_keys is not present #}
-            </div>
         </div>
         {% if (list_keys) %}
         <div class="keys">
@@ -73,6 +60,31 @@ const DISABLED_TEXT = "{{ string('buttons.delete_d') }}";
             </div>
         </div>
         {% endif %}
+        <div class="customer_phone">
+            <div class="col-1-4">{{ string('fields.customer.phone') }}</div>
+            <div class="col-3-4">{{ string('p') }}{{ customer.phone }}</div>
+        </div>
+        <div class="customer_name">
+            <div class="col-1-4">{{ string('fields.customer.name') }}</div>
+            <div class="col-3-4">{{ customer.name }}</div>
+        </div>
+        <div class="customer_note">
+            <div class="col-1-4">{{ string('fields.order.customer_note') }}</div>
+            <div class="css__pre col-3-4">{{ order.customer_note }}</div>
+        </div>
+        <div class="note">
+            <div class="col-1-4">{{ string('fields.note') }}</div>
+            <div class="col-3-4">
+                <span class="css__pre js__note">{{ order.note|raw }}</span> <a href="#" class="js__edit-note">(edit)</a>
+                <form action="{{ url('order:edit', { order:order.id }) }}" method="POST" class="css__form js__note-form hidden">
+                    {{ csrf_token_input(url('order:edit', { order:order.id }))|raw }}
+                    <textarea name="note"></textarea>
+                    <input type="hidden" name="action" value="note" />
+                    <button type="submit" class="edit btn blue tiny solid">{{ string('buttons.submit') }}</button>
+                </form>
+                {# View full data is here if list_keys is not present #}
+            </div>
+        </div>
         <div class="clear"></div>
     </div>
     {% endfor %}
