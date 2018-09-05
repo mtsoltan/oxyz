@@ -1,7 +1,9 @@
 var PIXELS_PER_MILLISECOND = 1.7;
 
-var XHRForm = function (formElement) {
+var XHRForm = function (formElement, disabledText) {
     var _THIS = this;
+    _THIS._enabledText = '';
+    _THIS._disabledText = disabledText || '...';
     _THIS._form = formElement;
     _THIS._method = (formElement && formElement.getAttribute) ? formElement.getAttribute('method') : 'POST';
     _THIS._action = (formElement && formElement.getAttribute) ? formElement.getAttribute('action') : window.location;
@@ -56,8 +58,7 @@ var XHRForm = function (formElement) {
             $('.js-flash').html(`<div class="alert alert-success">${complete_json.success}</div>`);
         if (complete_json.csrf)
             $('.csrf', _THIS._form).html(complete_json.csrf);
-        if (ENABLED_TEXT !== undefined)
-            $('button[type=submit]', _THIS._form).removeAttr('disabled').text(ENABLED_TEXT);
+        $('button[type=submit]', _THIS._form).removeAttr('disabled').text(_THIS._enabledText);
     };
     _THIS.on = function (key, handler) {
         if (!_THIS._events.includes(key)) {
@@ -70,7 +71,8 @@ var XHRForm = function (formElement) {
     };
     _THIS.submit = function (logResponse = false) {
         _THIS._data.append('jsenabled', 'true');
-        $('button[type=submit]', _THIS._form).attr({'disabled':'disabled'}).text(DISABLED_TEXT);
+        _THIS._enabledText = $('button[type=submit]', _THIS._form).text();
+        $('button[type=submit]', _THIS._form).attr({'disabled':'disabled'}).text(_THIS._disabledText);
         _THIS._xhr = new XMLHttpRequest();
         if (_THIS.onprogress && _THIS.onprogress.call) _THIS._xhr.upload.addEventListener('progress', function (event) {
             _THIS.onprogress.call(_THIS._xhr, event);

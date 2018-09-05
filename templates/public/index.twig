@@ -1,5 +1,8 @@
 {% extends "@layout/layout.twig" %}
 {% set title = string('titles.main_home') %}
+{% block styles %}
+<link rel="stylesheet" href="{{ cssurl('home') }}" />
+{% endblock %}
 {% block content %}
 {% include '@public/home/banner.twig' %}
 {% include '@public/home/bullets.twig' %}
