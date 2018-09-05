@@ -102,7 +102,7 @@ class Entity
             throw new \InvalidArgumentException('The value of a property of an entity cannot be an object.');
         }
 
-        if (isset($this->data[$el])) {
+        if (isset($this->{$el})) {
             $this->changed[$el] = $val;
             $this->data[$el] = $val;
         }

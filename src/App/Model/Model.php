@@ -88,7 +88,9 @@ abstract class Model
             return null;
         }
 
-        return $this->getByEntityData(['id' => $id], 1)[0];
+        $arr = $this->getByEntityData(['id' => $id], 1);
+
+        return count($arr) ? $arr[0] : false;
     }
 
     public function getEntitiesFromIds($ids) {
