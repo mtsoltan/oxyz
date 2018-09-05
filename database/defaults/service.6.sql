@@ -2,7 +2,12 @@ INSERT IGNORE INTO products VALUES(6,0,
     'ar=\n'
     'en=Electric Design\n',
     'ar=\n'
-    'en=Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin venenatis elit consequat mi feugiat ultricies. Maecenas pellentesque condimentum congue. Etiam dolor sem, auctor ut iaculis eu, finibus et lacus. Morbi finibus mi sed est mattis, eget vulputate nisi feugiat. Vestibulum in mi nibh. Curabitur dignissim tempor quam finibus fermentum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent ac ornare sapien. Etiam dapibus, neque ac condimentum interdum, diam arcu vestibulum ex, vitae convallis ex ex venenatis lectus. Cras convallis ultricies ligula sit amet consectetur. Morbi mattis neque at erat tempus efficitur. Donec semper tortor vel purus fringilla iaculis.',
+    'en='
+    'We offer to design any electronic circuit that can be feasibly implemented on a '
+    'single / double sided FR4 PCB board. Just send us a description of what you want '
+    'the product to do, and any data related to the production procedure, and one of '
+    'our specialized engineers will have a look at it and design it for you. '
+    '\n',
   '/static/images/services/6.jpg',1,0,1,'',UNIX_TIMESTAMP(),0);
 INSERT IGNORE INTO keystore VALUES(NULL,1,1,
     'ar=الصورة\n'

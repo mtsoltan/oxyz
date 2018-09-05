@@ -1,13 +1,29 @@
 INSERT IGNORE INTO products VALUES(1,1,
     'ar=الطباعة ثالثية الابعاد\n'
     'en=3D Printing\n',
-    'ar=\n'
-    'en=Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin venenatis elit consequat mi feugiat ultricies. Maecenas pellentesque condimentum congue. Etiam dolor sem, auctor ut iaculis eu, finibus et lacus. Morbi finibus mi sed est mattis, eget vulputate nisi feugiat. Vestibulum in mi nibh. Curabitur dignissim tempor quam finibus fermentum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent ac ornare sapien. Etiam dapibus, neque ac condimentum interdum, diam arcu vestibulum ex, vitae convallis ex ex venenatis lectus. Cras convallis ultricies ligula sit amet consectetur. Morbi mattis neque at erat tempus efficitur. Donec semper tortor vel purus fringilla iaculis.',
+    'ar='
+    'تتم الطباعة باستخدام مواد مختلفة كالبلاستيك وانواع '
+    'كتير من البوليمير ومن اسمها انت بيبقى عندك تصميم او '
+    'حتى تصور بتطلب مننا انه نصممه واحنا بناخد التصميم '
+    'ده بامتداد معين ونحوله لجزء ثلاثي الابعاد تقدر تستخدمه '
+    'في وظيفته المطلوبة وده يشمل أي جزء سواء ميكانيكي '
+    'مثل نموذج علبة تروس او كرسي محور، او غير ميكانيكي '
+    'مثل ميداليات، هدايا، فازة، تمثال، تحف فنية، الخ '
+    '\n'
+    'en='
+    'Provide us with a 3D model of a mechanical object like brackets, '
+    'gearboxes, etc., or a non-mechanical object likemedals, gifts, '
+    'trinkets, vases, statues, art models, etc., and we will 3D '
+    'print it for you in plastic or other polymers as requested. '
+    'If you have an imagination, but no 3D model, you can request '
+    'our services and we will design it for you. '
+    '\n',
   '/static/images/services/1.jpg',1,0,1,'',UNIX_TIMESTAMP(),0);
 INSERT IGNORE INTO keystore VALUES(NULL,1,1,
     'ar=الملف المطلوب طباعته\n'
     'en=File to Print\n',
-    'ar=برجاء رفع الملف المراد طباعته باحدي الامتدادات التالية'
+    'ar='
+    'برجاء رفع الملف المراد طباعته باحدي الامتدادات التالية'
     '(stl, obj)'
     'او ضغطهم في ملف'
     '(rar, zip)'

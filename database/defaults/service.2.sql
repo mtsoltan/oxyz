@@ -1,8 +1,16 @@
 INSERT IGNORE INTO products VALUES(2,1,
     'ar=النحت والتقطيع بالليزر\n'
     'en=Laser Carving and Cutting\n',
-    'ar=\n'
-    'en=Nunc metus erat, malesuada sit amet arcu a, accumsan interdum ex. Aenean sit amet dui iaculis, fringilla lacus ut, viverra augue. Aliquam diam massa, euismod ac urna ut, suscipit fermentum ex. In lorem ex, facilisis id quam ac, consectetur porttitor sapien. Nunc a erat ut augue cursus porta ac quis est. In commodo auctor justo, ac faucibus risus dignissim eu. Nunc magna sem, posuere ac lacus non, egestas consequat risus. Vivamus eget sollicitudin quam. Cras pharetra ligula eget turpis blandit pretium. Vestibulum maximus tristique purus in dapibus. Ut ultrices tellus nec nunc elementum lobortis.',
+    'ar='
+    '\n'
+    'en=We cut and carve a wide range of materials, that includes '
+    'various thicknesses of MDF, acrylic, foams, and cloth. We also '
+    'carve on harder material like glass and marble. We offer to produce '
+    'a variety of products that includes decoration products like lanterns, '
+    'portraits, vases, tissue boxes, and a wide variety of office '
+    'products like wood-cover notebooks, plan sheets, pen boxes, and '
+    'enginering products like wooden chassis for robots and machines. '
+    '\n',
   '/static/images/services/2.jpg',1,0,1,'',UNIX_TIMESTAMP(),0);
 INSERT IGNORE INTO keystore VALUES(NULL,1,1,
     'ar=الملف المراد تنفيذه\n'

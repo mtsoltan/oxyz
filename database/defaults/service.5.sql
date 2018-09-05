@@ -2,7 +2,12 @@ INSERT IGNORE INTO products VALUES(5,1,
     'ar=تصميم ميكانيكي هندسي وخردوات\n'
     'en=Mechanical and Gadget Design\n',
     'ar=\n'
-    'en=Pellentesque mattis gravida sem sed viverra. Suspendisse potenti. Fusce pellentesque tincidunt lorem, sed molestie ante ullamcorper eget. Donec elit nisi, dictum venenatis nisl at, finibus ultrices nisi. Ut pulvinar gravida tempus. Aliquam sit amet tortor a lorem feugiat blandit. Sed quis aliquet eros, consequat bibendum turpis. Donec sed ante sed orci faucibus sagittis. Mauris et pulvinar eros. Curabitur pharetra odio massa, ac laoreet purus hendrerit in. Phasellus vel bibendum quam. Fusce suscipit sollicitudin arcu, sit amet semper magna tempus sit amet. Maecenas aliquet, sem ac bibendum imperdiet, nunc metus consectetur mauris, vel facilisis justo diam faucibus velit. Praesent venenatis urna purus, non sodales sem efficitur quis. Sed malesuada rhoncus arcu sed porttitor.',
+    'en='
+    'You simply send us a photo or dimensions for any product, be it a mechanical product, '
+    'a decorative product, or a gadget, and one of our specialized engineers '
+    'will design it for you. We also offer you the ways to manufacture this product in '
+    'an efficient way using our experience in manucature procedures. '
+    '\n',
   '/static/images/services/5.jpg',1,0,1,'',UNIX_TIMESTAMP(),0);
 INSERT IGNORE INTO keystore VALUES(NULL,1,1,
     'ar=الصورة\n'
