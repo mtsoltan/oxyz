@@ -15,10 +15,12 @@ class View
     public function cssUrl($file) {
         $templates = []; // Templates order matters.
 
+        /* // For now, we load RTL styleshseets explicitly.
         if ($this->di['language'] == 'ar') { // Use RTL stylesheets if found.
             $templates[] = '/static/css/%s.rtl.min.css';
             $templates[] = '/static/css/%s.rtl.css';
         }
+        */
         $templates[] = '/static/css/%s.min.css';
         $templates[] = '/static/css/%s.css';
         foreach ($templates as $template) {

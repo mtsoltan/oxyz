@@ -7,6 +7,9 @@
             <input id="menu-toggle" type="checkbox">
             <div class="icon-menu"></div>
             <ul class="menu">
+                <li><a href="?lang={{ language == 'ar' ? 'en' : 'ar' }}">
+                    {{ language == 'ar' ? 'English' : 'عربي' }}
+                </a></li>
                 <li><a
                  href="{{ url('main:contact') }}"
                  class="{{ title == string('titles.main_contact') ? 'here' : '' }}">

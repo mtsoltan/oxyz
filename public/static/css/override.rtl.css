@@ -1,0 +1,23 @@
+/* RTL Setup */
+@import url(https://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
+* { direction: rtl; }
+.layout__ltr { direction: ltr; display: inline-block; }
+body { font-family: 'Open Sans', sans-serif; text-align: right; }
+h1,h2,h3,h4,h5 { font-family: "Droid Arabic Kufi", serif; font-weight: bold;}
+.form-builder__label { font-family: "Droid Arabic Kufi", serif; }
+.css__form input.filled:valid { border-right: 4px solid #0f0; }
+.css__form input.filled:invalid { border-right: 4px solid #f00; }
+.layout__align-left { text-align: right; }
+.menu li { float: left; }
+nav ul li ul { left: initial; right: 0; }
+.header .logo { float: right; }
+.title__with-image span { padding-right: 30px; }
+.title__with-image img { float: right; }
+.grid__service.grid__left div[class*='col-'] { float: right; }
+.grid__service.grid__right div[class*='col-'] { float: left; }
+.grid__service:nth-child(2n) .feed-card { transform: rotateZ(-2deg); }
+.grid__service:nth-child(2n+1) .feed-card { transform: rotateZ(2deg); }
+[class*='col-'] { float: right; }
+.menu a.arrow:after { margin-right: 10px; margin-left: 1px; }
+.order { border-right: 1px solid #000; }
+.order:nth-child(2n), .order:last-child { border-left: 1px solid #000; }

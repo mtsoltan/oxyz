@@ -17,7 +17,7 @@
         {% endif %}
         <a href="{{ url('session:logout') }}">{{ string('titles.session_logout') }}</a>
     {% else %}
-        {{ string('descriptions.footer_out') }} |
+        <span class="layout__inline">{{ string('descriptions.footer_out') }}</span> |
         {% include '@layout/mailto.twig' %} |
         <a href="{{ url('session:login') }}">{{ string('titles.session_login') }}</a>
     {% endif %}

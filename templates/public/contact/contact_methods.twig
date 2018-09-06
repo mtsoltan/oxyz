@@ -6,7 +6,9 @@
             <div class="col">
                 <i class="fas fa-address-card fa-4x"></i>
                 <h2>{{ string('contact.phone') }}</h2>
-                <p>{{ string('contact.phone.value')|split('|')|join('<br>')|raw }}</p>
+                <p>{% for item in string('contact.phone.value')|split('|') %}
+                <span class="layout__ltr">{{ item }}</span><br>
+                {% endfor %}</p>
             </div>
             <div class="col">
                 <i class="fas fa-map-marker-alt fa-4x"></i>

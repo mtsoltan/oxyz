@@ -49,7 +49,7 @@ blockquote {
 }
 .menu a.arrow:after {
   content: "";
-  display: inline-flex;
+  display: inline-block;
   vertical-align: inherit;
   height: 0;
   width: 0;
@@ -59,7 +59,8 @@ blockquote {
   border-top-color: #142e6c;
   margin-right: 1px;
   margin-left: 10px;
-  vertical-align: baseline;
+  position:relative;
+  top: 0.5em;
 }
 hr {
     height: 3px;
