@@ -9,7 +9,7 @@ INSERT IGNORE INTO products VALUES(3,1,
     '\n'
     'en='
     'Sick of etching your boards and paying for expensive photoresist '
-    'masks andhaving to deal with the parasitic effects of over-exposure '
+    'masks and having to deal with the parasitic effects of over-exposure '
     'to acid? We mill and drill PCBs in high accuracy and resolution in '
     'much efficient manner compared to the regular etching method. '
     '\n',
@@ -17,7 +17,14 @@ INSERT IGNORE INTO products VALUES(3,1,
 INSERT IGNORE INTO keystore VALUES(NULL,1,1,
     'ar=الملف المراد تنفيذه\n'
     'en=File to Carve\n',
-    'ar=\n'
+    'ar='
+    'برجاء رفع ملف لمشروع الدائرة المراد تنفيذها علي برنامج'
+    ' Protus او Eagle او Altium '
+    'بالامتدادات التالية : '
+    '(pdsprj, pcbdoc, brd, pdf, gerber)'
+    ' او ضغطهم في ملف '
+    'Zip او Rar'
+    ' في حالة وجود اكثر من ملف. مسموح برف ملفات بمساحة قصوي لا تتعدي 25 ميجا بايت.'
     'en=Please select a proteus / eagle / altium project or pcb layout file in one of the following extensions (pdsprj, pcbdoc, brd, pdf, gerber) or compress them (rar, zip) in case of multiple files. The maximum allowed upload size is 25 MB.\n',
     '__form::\n' 'name=file\n' 'type=file\n' 'id=file\n' 'required=1\n',
   3,3,1,0,UNIX_TIMESTAMP(),0);

@@ -39,7 +39,7 @@ INSERT IGNORE INTO keystore VALUES(NULL,1,2,
     '[ar]\n'
     '0=قطع\n'
     '1=حفر\n'
-    '2=كالهما\n'
+    '2=كلاهما\n'
     '[en]\n'
     '0=Cutting\n'
     '1=Engraving\n'

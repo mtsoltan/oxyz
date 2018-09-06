@@ -12,7 +12,7 @@ INSERT IGNORE INTO products VALUES(1,1,
     '\n'
     'en='
     'Provide us with a 3D model of a mechanical object like brackets, '
-    'gearboxes, etc., or a non-mechanical object likemedals, gifts, '
+    'gearboxes, etc., or a non-mechanical object like medals, gifts, '
     'trinkets, vases, statues, art models, etc., and we will 3D '
     'print it for you in plastic or other polymers as requested. '
     'If you have an imagination, but no 3D model, you can request '
@@ -32,14 +32,6 @@ INSERT IGNORE INTO keystore VALUES(NULL,1,1,
     'en=Please select the file you wish to print in one of the following formats (stl, obj) or compress them (rar, zip) in case of multiple files. The maximum allowed upload size is 25 MB.\n',
     '__form::\n' 'name=file\n' 'type=file\n' 'id=file\n' 'required=1\n',
   3,1,1,0,UNIX_TIMESTAMP(),0);
-INSERT IGNORE INTO keystore VALUES(NULL,1,2,
-    'ar=لون الطباعة المطلوب\n'
-    'en=Filament Color\n',
-    'ar=برجاء اختيار اللون المراد استخدامه في الطباعة من الاختيارات المتاحة حاليا، وان كنت تريد لونا معينا غير موجود بالختيارات فبرجاء التنويه عن ذلك في خانة الملحوظات.\n'
-    'en=Please select the color of the filament you want us to use while printing from the given options. If you wish to print in a color not provided in the options, please specify so in the notes section below.\n',
-    '0=000000\n'
-    '1=ffffff\n',
-  3,1,1,1,UNIX_TIMESTAMP(),0);
 INSERT IGNORE INTO keystore VALUES(NULL,1,3,
     'ar=\n'
     'en=Filament Material\n',
@@ -62,10 +54,20 @@ INSERT IGNORE INTO keystore VALUES(NULL,1,4,
     '1=100μm (Excellent Quality)\n'
     '2=100μm + Refining (Superb Quality)\n',
   3,1,1,1,UNIX_TIMESTAMP(),0);
+INSERT IGNORE INTO keystore VALUES(NULL,1,120,
+    'ar=لون الطباعة المطلوب\n'
+    'en=Filament Color\n',
+    'ar=برجاء اختيار اللون المراد استخدامه في الطباعة من الاختيارات المتاحة حاليا، وان كنت تريد لونا معينا غير موجود بالاختيارات فبرجاء التنويه عن ذلك في خانة الملحوظات.\n'
+    'en=Please select the color of the filament you want us to use while printing from the given options. If you wish to print in a color not provided in the options, please specify so in the notes section below.\n',
+    '0=000000\n'
+    '1=ffffff\n'
+    '2=ffff00\n'
+    '3=d892dc\n',
+  3,1,1,1,UNIX_TIMESTAMP(),0);
 INSERT IGNORE INTO keystore VALUES(NULL,1,127,
     'ar=ملحوظات\n'
     'en=Notes\n',
-    'ar=برجاء كتابة اي ملحوظة او تنويه خاص بالمطبوعات لالسترشاد بها ، وتحديدا ان كان مطلوب خامة غير ال PLA لاستخدامها في الطباعة\n'
+    'ar=برجاء كتابة اي ملحوظة او تنويه خاص بالمطبوعات للاسترشاد بها ، وتحديدا ان كان مطلوب خامة غير ال PLA لاستخدامها في الطباعة\n'
     'en=Please add any notes regarding this printing job here, especially so if you wish to print this file using a material other than PLA.\n',
     '__form::\n' 'name=notes\n' 'type=textarea\n' 'id=notes\n' 'maxlength=2047\n',
   3,1,1,0,UNIX_TIMESTAMP(),0);

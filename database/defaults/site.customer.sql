@@ -2,7 +2,7 @@
 INSERT IGNORE INTO keystore VALUES(NULL,1,1,
     'ar=رقم الهاتف المحمول\n'
     'en=Mobile Phone Number\n',
-    'ar=برجاء ادخال رقم الهاتف المحمول الخاص بسيادتكم للتواصل من خالله فيما بعد، وان كنت عميل سابق فبرجاء ادخال نفس رقم المحمول المسجل لدينا من قبل.\n'
+    'ar=برجاء ادخال رقم الهاتف المحمول الخاص بسيادتكم للتواصل من خلاله فيما بعد، وان كنت عميل سابق فبرجاء ادخال نفس رقم المحمول المسجل لدينا من قبل.\n'
     'en=Please enter the phone number that we will use to contact you. If you have placed an order before, and still own the phone number used in your previous order, please use that phone number.\n',
     '__form::\n' 'name=phone\n' 'type=tel\n' 'id=phone\n' 'maxlength=13\n' 'required=1\n',
   0,1,1,0,UNIX_TIMESTAMP(),0);
