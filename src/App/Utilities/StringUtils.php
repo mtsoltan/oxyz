@@ -13,9 +13,10 @@ class StringUtils
     public function __construct($di, &$store = null) {
         $this->di = $di;
         if (is_null($store)) {
-            $store = $_SESSION;
+            $this->store = & $_SESSION;
+        } else {
+            $this->store = & $store;
         }
-        $this->store = $store;
     }
 
     public function generateRandomString($len=32) {

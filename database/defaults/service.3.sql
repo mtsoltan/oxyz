@@ -2,12 +2,16 @@ INSERT IGNORE INTO products VALUES(3,1,
     'ar= تصنيع الدوائر الالكترونية\n'
     'en=PCB Milling\n',
     'ar='
+    'ان كنت تعاني من تحميض دوائرك الكهربية و دفع ارقام '
+    'كبيرة في التحميض التقليدي، نحن ننحت ونثقب الدوائر '
+    'الالكترونية بسرعة ودقة عالية بكفاءة اعلي بشكل ملحوظ '
+    'من التحميض التقليدي. '
     '\n'
     'en='
     'Sick of etching your boards and paying for expensive photoresist '
     'masks andhaving to deal with the parasitic effects of over-exposure '
     'to acid? We mill and drill PCBs in high accuracy and resolution in '
-    'much efficient manner compared with the regular etching method. '
+    'much efficient manner compared to the regular etching method. '
     '\n',
   '/static/images/services/3.jpg',1,0,1,'',UNIX_TIMESTAMP(),0);
 INSERT IGNORE INTO keystore VALUES(NULL,1,1,

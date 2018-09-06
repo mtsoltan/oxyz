@@ -23,11 +23,12 @@ INSERT IGNORE INTO keystore VALUES(NULL,1,1,
     'ar=الملف المطلوب طباعته\n'
     'en=File to Print\n',
     'ar='
-    'برجاء رفع الملف المراد طباعته باحدي الامتدادات التالية'
-    '(stl, obj)'
-    'او ضغطهم في ملف'
-    '(rar, zip)'
-    'في حالة كانوا اكثر من ملف، بمساحة لا تتعدي 25 ميجا بايت\n'
+    'برجاء رفع الملف المراد طباعته باحدي الامتدادات التالية '
+    '(stl, obj) '
+    'او ضغطهم في ملف '
+    '(rar, zip) '
+    'في حالة كانوا اكثر من ملف، بمساحة لا تتعدي 25 ميجا بايت '
+    '\n'
     'en=Please select the file you wish to print in one of the following formats (stl, obj) or compress them (rar, zip) in case of multiple files. The maximum allowed upload size is 25 MB.\n',
     '__form::\n' 'name=file\n' 'type=file\n' 'id=file\n' 'required=1\n',
   3,1,1,0,UNIX_TIMESTAMP(),0);
@@ -53,9 +54,9 @@ INSERT IGNORE INTO keystore VALUES(NULL,1,4,
     'ar=برجاء اختيار جودة المنتج النهائي.\n'
     'en=Please specify the desired final product quality quality.\n',
     '[ar]\n'
-    '0=200 مايكرون )جودة جيدة جدا(\n'
-    '1=100 مايكرون )جودة ممتازة(\n'
-    '2=100 مايكرون + تنعيم )جودة فائقة(\n'
+    '0=200 مايكرون (جودة جيدة جدا)\n'
+    '1=100 مايكرون (جودة ممتازة)\n'
+    '2=100 مايكرون + تنعيم (جودة فائقة)\n'
     '[en]\n'
     '0=200μm (Very Good Quality)\n'
     '1=100μm (Excellent Quality)\n'

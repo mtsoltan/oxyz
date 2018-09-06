@@ -31,6 +31,7 @@ if($di['config']['proxy']) {
 $app->add(new \App\Middleware\UpdateSession($di));
 $app->add(new \App\Middleware\Session($di));
 $app->add(new \App\Middleware\RouteHelper($di));
+$app->add(new \App\Middleware\Language($di));
 $app->add(new \App\Middleware\AllowOrigin($di));
 if ($di['config']['mode'] == 'development') {
     $app->add(new \RunTracy\Middlewares\TracyMiddleware($app));

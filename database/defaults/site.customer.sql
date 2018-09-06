@@ -14,7 +14,7 @@ INSERT IGNORE INTO keystore VALUES(NULL,1,2,
     '__form::\n' 'name=name\n' 'type=text\n' 'id=name\n' 'maxlength=255\n' 'required=1\n' 'pattern=.+ .+ .+\n',
   0,1,1,0,UNIX_TIMESTAMP(),0);
 INSERT IGNORE INTO keystore VALUES(NULL,1,3,
-    'ar=البريد الالكتروني )الايميل(\n'
+    'ar=البريد الالكتروني (الايميل)\n'
     'en=Email\n',
     'ar=يمكنك ترك هذا الحقل فارغا ان لم تكن تمتلك بريد الكتروني\n'
     'en=You can leave this empty if you do not have an email.\n',

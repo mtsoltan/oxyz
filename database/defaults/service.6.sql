@@ -1,12 +1,16 @@
 INSERT IGNORE INTO products VALUES(6,0,
     'ar=\n'
     'en=Electric Design\n',
-    'ar=\n'
+    'ar='
+    'نحن نقوم بتصميم أي دوائر الكترونية يمكن تنفيذها علي '
+    'لوح الكترونية ذات وجه او وجهين، فقط أرسل لنا وصف '
+    'الدائرة المراد تصميمها وأي بيانات لها علاقة بالتصنيع. '
+    '\n'
     'en='
     'We offer to design any electronic circuit that can be feasibly implemented on a '
     'single / double sided FR4 PCB board. Just send us a description of what you want '
-    'the product to do, and any data related to the production procedure, and one of '
-    'our specialized engineers will have a look at it and design it for you. '
+    'the product to do, and any data related to the production procedure, and '
+    'we will have a look at it and design it for you. '
     '\n',
   '/static/images/services/6.jpg',1,0,1,'',UNIX_TIMESTAMP(),0);
 INSERT IGNORE INTO keystore VALUES(NULL,1,1,

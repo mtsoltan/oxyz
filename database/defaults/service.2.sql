@@ -2,24 +2,32 @@ INSERT IGNORE INTO products VALUES(2,1,
     'ar=النحت والتقطيع بالليزر\n'
     'en=Laser Carving and Cutting\n',
     'ar='
+    'نحن نقطع وننحت عدد كبير من المواد منها تخانات مختلفة من '
+    'الخشب المضغوط و الاكريليك والقماش وغيرها. أيضا ننحت '
+    'على مواد اصلب مثل الزجاج والرخام. نحن نوفر مجموعة '
+    'مختلفة من المنتجات منها منتجات الديكور مثل البورتريه '
+    'والفازات وصناديق المناديل، ومنتجات المكاتب مثل غلاف '
+    'خشبي للكشاكيل والكتب ودفاتر الورق وصناديق الأقلام، '
+    'ومنتجات هندسية مثل شاسيهات الروبوتات والماكينات. '
     '\n'
     'en=We cut and carve a wide range of materials, that includes '
     'various thicknesses of MDF, acrylic, foams, and cloth. We also '
     'carve on harder material like glass and marble. We offer to produce '
     'a variety of products that includes decoration products like lanterns, '
     'portraits, vases, tissue boxes, and a wide variety of office '
-    'products like wood-cover notebooks, plan sheets, pen boxes, and '
-    'enginering products like wooden chassis for robots and machines. '
+    'products like wood-cover notebooks, paper holders, pen boxes, and '
+    'enginering products like chassis for lightweight robots and machines. '
     '\n',
   '/static/images/services/2.jpg',1,0,1,'',UNIX_TIMESTAMP(),0);
 INSERT IGNORE INTO keystore VALUES(NULL,1,1,
     'ar=الملف المراد تنفيذه\n'
     'en=File to Carve\n',
-    'ar=برجاء رفع الملف المراد تنفيذه باحدي الامتدادات التالية'
-    '(dwg, dxf)'
-    'او ضغطهم في ملف'
-    '(rar, zip)'
-    'في حالة كانوا اكثر من ملف، بمساحة لا تتعدي 25 ميجا بايت\n'
+    'ar=برجاء رفع الملف المراد تنفيذه باحدي الامتدادات التالية '
+    '(dwg, dxf) '
+    'او ضغطهم في ملف '
+    '(rar, zip) '
+    'في حالة كانوا اكثر من ملف، بمساحة لا تتعدي 25 ميجا بايت '
+    '\n'
     'en=Please select the file you wish to carve in one of the following formats (stl, obj) or compress them (rar, zip) in case of multiple files. The maximum allowed upload size is 25 MB.\n',
     '__form::\n' 'name=file\n' 'type=file\n' 'id=file\n' 'required=1\n',
   3,2,1,1,UNIX_TIMESTAMP(),0);
@@ -50,7 +58,7 @@ INSERT IGNORE INTO keystore VALUES(NULL,1,3,
     '4=اكريلك تخانة 3 ملي\n'
     '5=اكريلك تخانة 6 ملي\n'
     '6=جلود او اقمشة\n'
-    '7=رخام او زجاج )للنحت فقط(\n'
+    '7=رخام او زجاج (للنحت فقط)\n'
     '[en]\n'
     '0=3mm Light-colored MDF\n'
     '1=6mm Dark-colored MDF\n'

@@ -1,10 +1,16 @@
 INSERT IGNORE INTO products VALUES(5,1,
     'ar=تصميم ميكانيكي هندسي وخردوات\n'
     'en=Mechanical and Gadget Design\n',
-    'ar=\n'
+    'ar='
+    'بكل بساطة يمكنك ارسال صورة او ابعاد او تصور لأي '
+    'منتج أيا كان تصميم ميكانيكي او ديكور او كماليات وسوف '
+    'نقوم بتصميمه لك. نحن أيضا نوفر لك وسائل وإرشادات '
+    'لتصنيع منتجك بكفاءة بخبرتنا السابقة في عمليات التصنيع '
+    'المختلفة. '
+    '\n'
     'en='
     'You simply send us a photo or dimensions for any product, be it a mechanical product, '
-    'a decorative product, or a gadget, and one of our specialized engineers '
+    'a decorative product, or a gadget, and we '
     'will design it for you. We also offer you the ways to manufacture this product in '
     'an efficient way using our experience in manucature procedures. '
     '\n',
