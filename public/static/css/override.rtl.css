@@ -1,10 +1,7 @@
 /* RTL Setup */
-@import url(https://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
 * { direction: rtl; }
 .layout__ltr { direction: ltr; display: inline-block; }
-body { font-family: 'Open Sans', sans-serif; text-align: right; }
-h1,h2,h3,h4,h5 { font-family: "Droid Arabic Kufi", serif; font-weight: bold;}
-.form-builder__label { font-family: "Droid Arabic Kufi", serif; }
+body { text-align: right; }
 .css__form input.filled:valid { border-right: 4px solid #0f0; }
 .css__form input.filled:invalid { border-right: 4px solid #f00; }
 .layout__align-left { text-align: right; }
@@ -21,3 +18,13 @@ nav ul li ul { left: initial; right: 0; }
 .menu a.arrow:after { margin-right: 10px; margin-left: 1px; }
 .order { border-right: 1px solid #000; }
 .order:nth-child(2n), .order:last-child { border-left: 1px solid #000; }
+select {
+    background-position: 1% 50%;
+    padding: .78em .5em;
+    padding-left: 1.4em
+}
+@media screen and (max-width: 860px) {
+    #menu-toggle-label, .icon-menu {
+        right: initial; left: 0;
+    }
+}

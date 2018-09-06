@@ -52,8 +52,12 @@ var XHRForm = function (formElement, disabledText) {
     _THIS.oncomplete = function (complete_json) { // function(response) this refers to xhr
         if (complete_json.location)
             window.location = complete_json.location;
-        if (complete_json.error)
+        if (complete_json.error) {
             $('.js-flash').html(`<div class="alert alert-danger">${complete_json.error}</div>`);
+            $('html, body').animate({
+                scrollTop: $('.js-flash').offset().top + 1
+            }, Math.abs($('.js-flash').offset().top / PIXELS_PER_MILLISECOND));
+        }
         if (complete_json.success)
             $('.js-flash').html(`<div class="alert alert-success">${complete_json.success}</div>`);
         if (complete_json.csrf)

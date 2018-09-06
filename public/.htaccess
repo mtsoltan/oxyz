@@ -1,7 +1,7 @@
 Order deny,allow
 Allow from all
 
-<FilesMatch "\.(?i:gif|jpe?g|png|ico|css|js)$">
+<FilesMatch "\.(?i:gif|jpe?g|png|ico|css|js|woff|woff2)$">
   <IfModule mod_headers.c>
     Header set Cache-Control "max-age=2592000, public, must-revalidate"
   </IfModule>

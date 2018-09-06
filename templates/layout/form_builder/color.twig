@@ -1,0 +1,10 @@
+{% extends "@layout/form_builder/input.twig" %}
+{% block input %}
+{% for value,text in attributes %}
+    <input type="radio"  name="{{ key }}" id="{{ key }}_{{ loop.index }}"
+        required value="{{ value }}" {{ loop.index == 1 ? 'checked' : '' }}>
+    <label for="{{ key }}_{{ loop.index }}"
+        class="css__color-box" style="background-color: #{{ text }};"></label><br>
+{% endfor %}
+</select>
+{% endblock %}

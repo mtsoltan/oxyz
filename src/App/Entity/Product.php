@@ -10,6 +10,7 @@ class Product extends Entity
 
     const KEY_NOTES        = 127;
     const KEY_ALLOWED_EXTS = 126; // TODO: Set customer 254 to province
+    const KEY_COLOR        = 120;
 
     protected $ini = ['name', 'description'];
 

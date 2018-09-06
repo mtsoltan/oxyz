@@ -57,7 +57,11 @@ class FormBuilder
                 }
             } else { // A select. $key->value are options.
                 $viewArray['key'] = self::SELECT_MARKER . $key->key;
-                $inputParagraph = $this->di['view']->fetch('@layout/form_builder/select.twig', $viewArray);
+                if ($key->key == \App\Entity\Product::KEY_COLOR) {
+                    $inputParagraph = $this->di['view']->fetch('@layout/form_builder/color.twig', $viewArray);
+                } else {
+                    $inputParagraph = $this->di['view']->fetch('@layout/form_builder/select.twig', $viewArray);
+                }
             }
             $this->inputsArray[] = $inputParagraph;
         }

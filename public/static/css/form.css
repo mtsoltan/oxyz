@@ -1,5 +1,5 @@
 .form-builder__label {
-    font-family: "Montserrat";
+    font-family: "Finalist", sans-serif;
     font-weight: 400;
     font-size: 1.17em;
     display: block;
@@ -9,9 +9,16 @@
     font-size: 0.7em;
     display: block;
 }
-.css__form input.filled:valid {
+.css__form input.filled:valid:not([type=checkbox]):not([type=radio]) {
     border-left: 4px solid #0f0;
 }
-.css__form input.filled:invalid {
+.css__form input.filled:invalid:not([type=checkbox]):not([type=radio]) {
     border-left: 4px solid #f00;
+}
+.css__color-box {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    position: relative;
+    border: 1px solid #000;
 }

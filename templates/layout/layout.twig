@@ -1,5 +1,6 @@
 {# Blocks content|scripts|styles Variables title|view_title|sidebar} #}
 {% set logged_user = user() %}
+{% set fonturl = '/static/fonts/Finalist.woff2' %}
 {% set top_bar = 1 %}
 {% set language = di()['language'] %}
 <!DOCTYPE html>
@@ -9,6 +10,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="icon" href="/favicon.png" type="image/x-icon">
+        <style>
+        @font-face {
+          font-family: 'Finalist';
+          src: local('Finalist'), local('Finalist-Regular'), url({{ fonturl }}) format('woff2');
+        }
+        </style>
         <link rel="stylesheet" href="{{ cssurl('vital') }}" />
         <link rel="stylesheet" href="{{ cssurl('override') }}" />
         <link rel="stylesheet" href="{{ cssurl('main') }}" />
