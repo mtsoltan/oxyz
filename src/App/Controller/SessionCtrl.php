@@ -122,7 +122,7 @@ class SessionCtrl extends BaseCtrl
         session_destroy();
         $response = \Dflydev\FigCookies\FigResponseCookies::expire($response, $session_cookie_name);
 
-        return $response->withHeader('Location', $this->view_functions->pathFor('session:login'));
+        return $response->withHeader('Location', $this->view_functions->pathFor('main:index'));
     }
 
     /**

@@ -126,7 +126,7 @@ class Session
         // we don't use the standard "logout" method here
         // because that implies that a session actually exists
         // which in this case, it doesn't (or is invalid)
-        $response = $response->withStatus(307)->withHeader('Location', $this->di['utility.view']->pathFor('session:login'));
+        $response = $response->withStatus(307)->withHeader('Location', $this->di['utility.view']->pathFor('main:index'));
         $response = FigResponseCookies::expire($response, $this->cookie_name);
         session_destroy();
         return $response;
