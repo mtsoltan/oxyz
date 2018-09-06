@@ -71,10 +71,6 @@ class DependencyInjection
             return new \Slim\Flash\Messages();
         };
 
-        $strings = new \App\Utilities\StringUtils($di);
-        $strings->injectStrings($di, ['strings', 'forms']);
-        unset($strings);
-
         if ($di['config']['mode'] == 'development') {
             $di['twig_profile'] = function () {
                 return new \Twig_Profiler_Profile();
