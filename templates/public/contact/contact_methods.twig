@@ -4,6 +4,11 @@
         <hr class="red small">
         <div class="autogrid padded">
             <div class="col">
+                <img src="{{ imgurl('facebook.png') }}" style="display: block; margin: auto;">
+                <h2>{{ string('contact.facebook') }}</h2>
+                <p><a class="layout__ltr" href="{{ string('contact.facebook.link') }}">{{ string('contact.facebook.value') }}</a></p>
+            </div>
+            <div class="col">
                 <i class="fas fa-address-card fa-4x"></i>
                 <h2>{{ string('contact.phone') }}</h2>
                 <p>{% for item in string('contact.phone.value')|split('|') %}
