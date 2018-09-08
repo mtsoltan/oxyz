@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /thank_you
+Disallow: /login
+Disallow: /reset
+Disallow: /*.jpg$
+Disallow: /*.png$
+Noindex: /thank_you
+Sitemap: https://originalxyz.com/sitemap.xml
