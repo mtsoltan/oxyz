@@ -32,10 +32,13 @@ class OrderCtrl extends BaseCtrl
         }
 
         $orders = $orderModel->getByEntityData($data);
-        if (!isset($data['product_id']))
+        $idedProduct = null;
+        if (!isset($data['product_id'])) {
             $products = $this->di['model.product']->getAllServices(); // Including disabled.
-        else
-            $products = [$this->di['model.product']->getById($data['product_id'])];
+        } else {
+            $idedProduct = $this->di['model.product']->getById($data['product_id']);
+            $products = [$idedProduct];
+        }
 
         $productsKeyed = [];
         foreach ($products as $product) {
@@ -52,6 +55,9 @@ class OrderCtrl extends BaseCtrl
             'products' => $productsKeyed,
             'keystore' => $keystoresKeyed,
             'list_keys' => $listKeys ? true : false,
+            'orders_title' => $this->view_functions->string('titles.order_view_dynamic',
+                is_null($idedProduct) ? $this->view_functions->string('titles.order_view_pid') : $idedProduct->name,
+                isset($data['state']) ? $this->view_functions->string('enum.pstate.' . $data['state']) : ''),
             'states' => [
                 'pending' => $orderModel::STATE_PENDING,
                 'cancelled' => $orderModel::STATE_CANCELLED,
