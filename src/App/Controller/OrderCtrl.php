@@ -116,15 +116,39 @@ class OrderCtrl extends BaseCtrl
                 }
                 break;
             case 'finalize':
+                // $order->finalize();
+                return $handler->respondWithJson(array(
+                    'success' => $strings['notices.action_success'],
+                    'csrf' => $this->view_functions->csrfTokenInput(
+                        $this->view_functions->pathFor('order:edit', ['order' => $order->id])),
+                ), $response);
                 break;
             case 'cancel':
+                // $order->cancel();
+                return $handler->respondWithJson(array(
+                    'success' => $strings['notices.action_success'],
+                    'csrf' => $this->view_functions->csrfTokenInput(
+                        $this->view_functions->pathFor('order:edit', ['order' => $order->id])),
+                ), $response);
                 break;
             case 'roll':
+                // $order->rollback();
+                return $handler->respondWithJson(array(
+                    'success' => $strings['notices.action_success'],
+                    'csrf' => $this->view_functions->csrfTokenInput(
+                        $this->view_functions->pathFor('order:edit', ['order' => $order->id])),
+                ), $response);
                 break;
             case 'blacklist':
+                // $order->blacklist();
+                return $handler->respondWithJson(array(
+                    'success' => $strings['notices.action_success'],
+                    'csrf' => $this->view_functions->csrfTokenInput(
+                        $this->view_functions->pathFor('order:edit', ['order' => $order->id])),
+                ), $response);
                 break;
             default:
-                return $handler->respondWithError($this->di['strings.forms']['required.all'], $response);
+                return $handler->respondWithError($this->di['strings::forms']['required.all'], $response);
         }
     }
 

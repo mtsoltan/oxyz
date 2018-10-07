@@ -25,11 +25,12 @@ const SUBMIT_DISABLED_TEXT = "{{ string('buttons.submit_d') }}";
             <div class="col-3-4">
                 {{ string('enum.pstate.'~order.state) }}&nbsp;
                 <form action="{{ url('order:edit', { order:order.id }) }}" method="POST" class="layout__inline css__form js__actions-form">
-                    {{ csrf_token_input(url('order:edit', { order:order.id }))|raw }}
-                    <button type="submit" id="finalize" class="btn blue tiny solid">{{ string('buttons.finalize') }}</button>
-                    <button type="submit" id="cancel" class="btn red tiny solid">{{ string('buttons.cancel') }}</button>
-                    <button type="submit" id="roll" class="btn red tiny solid">{{ string('buttons.roll') }}</button>
-                    <button type="submit" id="blacklist" class="btn red tiny solid">{{ string('buttons.blacklist') }}</button>
+                    <span class="csrf">{{ csrf_token_input(url('order:edit', { order:order.id }))|raw }}</span>
+                    <input type="hidden" name="action" value="">
+                    <button id="finalize" class="btn blue tiny solid">{{ string('buttons.finalize') }}</button>
+                    <button id="cancel" class="btn red tiny solid">{{ string('buttons.cancel') }}</button>
+                    <button id="roll" class="btn red tiny solid">{{ string('buttons.roll') }}</button>
+                    <button id="blacklist" class="btn red tiny solid">{{ string('buttons.blacklist') }}</button>
                 </form>
                 {# View full data is here if list_keys is not present #}
             </div>

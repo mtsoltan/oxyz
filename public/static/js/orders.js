@@ -15,4 +15,27 @@ $(function () {
         };
         handler.submit(true);
     });
+
+    // Changing order state.
+    $('.js__actions-form button').click(function(ev) {
+        let button = this;
+        button.form.action.value = button.id;
+        let handler = new XHRForm(button.form);
+        handler.onsuccess = function (json) {
+            if (button.id === 'finalize') {
+                $(button).closest('.order').slideToggle(); // Depends on if state is set.
+            }
+            if (button.id === 'cancel') {
+                $(button).closest('.order').slideToggle(); // Depends on if state is set.
+            }
+            if (button.id === 'roll') {
+                $(button).closest('.order').slideToggle(); // Depends on if state is set.
+            }
+            if (button.id === 'blacklist') {
+                $(button).closest('.order').slideToggle(); // Depends on if state is set.
+            }
+        };
+        handler.submit(true);
+        return false;
+    });
 });
