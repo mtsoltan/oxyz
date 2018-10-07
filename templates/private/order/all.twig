@@ -86,7 +86,7 @@ const SUBMIT_DISABLED_TEXT = "{{ string('buttons.submit_d') }}";
             <div class="col-3-4">
                 <span class="css__pre js__note">{{ order.note|raw }}</span> <a href="#" class="js__edit-note">(edit)</a>
                 <form action="{{ url('order:edit', { order:order.id }) }}" method="POST" class="css__form js__note-form hidden">
-                    {{ csrf_token_input(url('order:edit', { order:order.id }))|raw }}
+                    <span class="csrf">{{ csrf_token_input(url('order:edit', { order:order.id }))|raw }}</span>
                     <textarea name="note"></textarea>
                     <input type="hidden" name="action" value="note" />
                     <button type="submit" class="edit btn blue tiny solid">{{ string('buttons.submit') }}</button>

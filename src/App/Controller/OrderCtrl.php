@@ -110,6 +110,8 @@ class OrderCtrl extends BaseCtrl
                     $order = $order->save();
                     return $handler->respondWithJson(array(
                         'note' => $order->note,
+                        'csrf' => $this->view_functions->csrfTokenInput(
+                            $this->view_functions->pathFor('order:edit', ['order' => $order->id])),
                     ), $response);
                 }
                 break;
