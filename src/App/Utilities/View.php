@@ -82,7 +82,7 @@ class View
     public function string($key, ...$vars) {
         $matches = [];
         if (preg_match('%(strings::[^.]+)\.(.+)%', $key, $matches)) {
-            return sprintf($this->di[$matches[1]][$matches[2]]);
+            return sprintf($this->di[$matches[1]][$matches[2]], ...$vars);
         }
         return sprintf($this->di['strings'][$key], ...$vars);
     }
