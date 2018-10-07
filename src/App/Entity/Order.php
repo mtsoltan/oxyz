@@ -55,7 +55,7 @@ class Order extends Entity
             $this->state = $model::STATE_FINALIZED;
             $rv = $this->save();
             if ($rv) {
-                // Transaction logic.
+                // TODO: Transaction logic.
                 return $rv;
             }
         }
@@ -66,8 +66,9 @@ class Order extends Entity
         $model = $this->model;
         if ($this->state == $model::STATE_FINALIZED) {
             $this->state = $model::STATE_ROLLED;
+            $rv = $this->save();
             if ($rv) {
-                // Transaction logic.
+                // TODO: Transaction logic.
                 return $rv;
             }
         }
@@ -78,16 +79,17 @@ class Order extends Entity
         $model = $this->model;
         if ($this->state == $model::STATE_PENDING || $model::STATE_ROLLED) {
             $this->state = $model::STATE_CANCELLED;
+            $rv = $this->save();
             if ($rv) {
-                // Transaction logic.
+                // TODO: Transaction logic.
                 return $rv;
             }
         }
-      throw new \LogicException('Cannot cancel an order that is finalized. Please roll it back first.');
+        throw new \LogicException('Cannot cancel an order that is finalized. Please roll it back first.');
     }
 
     public function  blacklist() {
-        // Cancel all orders by IP (in blacklist entity).
+        // TODO: Cancel all orders by IP (in blacklist entity).
         // Disable all customers by IP (in blacklist entity).
         // Blacklist logic.
         return $this;
