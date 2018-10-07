@@ -125,3 +125,15 @@ span.fix:after {
 .css__pre {
     white-space: pre-wrap;
 }
+.css__color-box {
+    width: 20px;
+    display: inline-block;
+    position: relative;
+    border: 1px solid #000;
+}
+label.css__color-box {
+    height: 20px;
+}
+span.css__color-box {
+    height: 10px;
+}

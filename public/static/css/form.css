@@ -15,10 +15,3 @@
 .css__form input.filled:invalid:not([type=checkbox]):not([type=radio]) {
     border-left: 4px solid #f00;
 }
-.css__color-box {
-    width: 20px;
-    height: 20px;
-    display: inline-block;
-    position: relative;
-    border: 1px solid #000;
-}

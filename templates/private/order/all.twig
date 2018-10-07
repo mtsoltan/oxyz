@@ -52,11 +52,19 @@ const SUBMIT_DISABLED_TEXT = "{{ string('buttons.submit_d') }}";
             <div class="col-3-4">
                 {% set keys = order.keys %}
                 {% for key in keys %}
-                    {{ key.label }}={{
-                        keystore[key.description].value[key.value] is defined ?
-                        keystore[key.description].value[key.value] :
-                        key.value
-                    }}<br>
+                    {# keystore[keyId] is an element of type App\Entity\KeyStore #}
+                    {# key.description for order keys stores an id for a KeyStore entity. #}
+                    {{ key.label }}=
+                    {% if keystore[key.description].value[key.value] is defined %}
+                        {%  if keystore[key.description].key == color_id %}
+                            <span class="css__color-box" style="background-color:#{{ keystore[key.description].value[key.value] }};"></span>
+                        {% else %}
+                            {{ keystore[key.description].value[key.value] }}
+                        {% endif %}
+                    {% else %}
+                        {{ key.value }}
+                    {% endif %}
+                    <br>
                 {% endfor %}
             </div>
         </div>

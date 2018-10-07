@@ -53,6 +53,7 @@ class OrderCtrl extends BaseCtrl
             'orders' => $orders,
             'products' => $productsKeyed,
             'keystore' => $keystoresKeyed,
+            'color_id' => \App\Entity\Product::KEY_COLOR,
             'list_keys' => $listKeys ? true : false,
             'orders_title' => $this->view_functions->string('titles.order_view_dynamic',
                 is_null($idedProduct) ? $this->view_functions->string('titles.order_view_pid') : $idedProduct->name,
