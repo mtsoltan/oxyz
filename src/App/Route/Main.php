@@ -48,7 +48,7 @@ class Main extends Base
             })->add($this->access()->requirePermission('user_edit'));
 
             $this->group('/admin', function () {
-                $this->get('/orders', OrderCtrl::class.':all')->setName('order:all');
+                $this->get('/orders', OrderCtrl::class.':all')->setName('order:all'); // Takes query params: product_id, state, listkeys
                 $this->post('/orders/{order:[0-9]+}', OrderCtrl::class.':edit')->setName('order:edit');
             })->add($this->access()->requirePermission('order_edit'));
 

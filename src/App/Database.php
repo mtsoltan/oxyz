@@ -11,8 +11,10 @@ class Database extends \PDO
     protected $destroy;
     protected $debug;
     protected $useBuffered;
+    /** @var \PDOStatement $currentStatement */
     protected $currentStatement;
     protected $queries = [];
+    /** @var \PDOStatement[] $preparedStatements */
     protected $preparedStatements = [];
     protected $boundValues = [];
     protected $resultSets = [];
@@ -39,6 +41,10 @@ class Database extends \PDO
         $this->query('SET session interactive_timeout=28800')->fetchAll();
     }
 
+    /**
+     * @param bool $query
+     * @throws DatabaseException
+     */
     public function dbDie($query = false) {
         $endable = $query ? $this->queries : $this->preparedStatements;
         throw new DatabaseException($this->errorInfo() . ' :: ' . end($endable));
@@ -50,7 +56,7 @@ class Database extends \PDO
         return $this;
     }
 
-    public function prepare($q, $options = NULL) {
+    public function prepare($q, $options = null) {
         $this->preparedStatements[] = $q;
         if (is_null($options)) $options = $this->useBuffered;
         else $options = array_merge($options, $this->useBuffered);
@@ -107,16 +113,28 @@ class Database extends \PDO
         return $rv;
     }
 
+    /**
+     * Resets the database. Be very careful when calling this.
+     * @throws DatabaseException
+     */
     public function reset() {
         $this->destroy();
         $this->initialize();
     }
 
+    /**
+     * Private function to destroy the databse.
+     * @see Database::reset()
+     */
     private function destroy() {
         $destroy = file_get_contents($this->destroy);
         $this->exec($destroy);
     }
 
+    /**
+     * Initializes the database, should be called once if the tables don't exist.
+     * @throws DatabaseException
+     */
     private function initialize() {
         ini_set('max_execution_time', 300);
         $initial = file_get_contents($this->initial);

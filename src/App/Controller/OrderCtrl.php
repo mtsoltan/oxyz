@@ -5,11 +5,10 @@ namespace App\Controller;
 class OrderCtrl extends BaseCtrl
 {
     /**
-     * TODO: Build this
      * @param \Slim\Http\Request $request
      * @param \Slim\Http\Response $response
      * @param array $args Not used.
-     * @return \Slim\Http\Response The rendered view.
+     * @return \Psr\Http\Message\ResponseInterface The rendered view.
      */
     public function all($request, $response, $args) {
         $orderModel = $this->di['model.order'];
@@ -72,10 +71,11 @@ class OrderCtrl extends BaseCtrl
      * @param \Slim\Http\Request $request
      * @param \Slim\Http\Response $response
      * @param array $args Not used.
-     * @return \Slim\Http\Response The rendered view.
+     * @return \Psr\Http\Message\ResponseInterface The rendered view.
      */
     public function edit($request, $response, $args) {
         // TODO: Finalizing deletes file
+        /** @var \App\Model\Order $orderModel */
         $orderModel = $this->di['model.order'];
         $user = $this->di['user'];
         $strings = $this->di['strings'];
@@ -93,6 +93,7 @@ class OrderCtrl extends BaseCtrl
         }
 
         // Validate Field Presence
+        /** @var \App\Entity\Order $order */
         $order = $orderModel->getById(isset($args['order']) ? $args['order'] : 0);
         if (!$order) {
             return $handler->respondWithError($this->di['strings.forms']['required.all'], $response);
@@ -128,7 +129,7 @@ class OrderCtrl extends BaseCtrl
      * @param \Slim\Http\Request $request
      * @param \Slim\Http\Response $response
      * @param array $args Not used.
-     * @return \Slim\Http\Response The rendered view.
+     * @return \Psr\Http\Message\ResponseInterface The rendered view.
      */
     public function added($request, $response, $args) {
         return $this->view->render($response, '@public/order/added.twig', array());
@@ -138,7 +139,7 @@ class OrderCtrl extends BaseCtrl
      * @param \Slim\Http\Request $request
      * @param \Slim\Http\Response $response
      * @param array $args Not used.
-     * @return \Slim\Http\Response The rendered view.
+     * @return \Psr\Http\Message\ResponseInterface The rendered view.
      */
     public function add($request, $response, $args) {
         $productModel = $this->di['model.product'];
@@ -165,7 +166,7 @@ class OrderCtrl extends BaseCtrl
      * @param \Slim\Http\Request $request
      * @param \Slim\Http\Response $response
      * @param array $args Not used.
-     * @return \Slim\Http\Response The rendered view.
+     * @return \Psr\Http\Message\ResponseInterface The rendered view.
      */
     public function handleAdd($request, $response, $args) {
         $productModel = $this->di['model.product'];

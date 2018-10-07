@@ -4,6 +4,7 @@ namespace App\Controller;
 
 abstract class BaseCtrl
 {
+    /** @var \Slim\Container */
     protected $di;
 
     /**

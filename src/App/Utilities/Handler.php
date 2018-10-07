@@ -100,6 +100,7 @@ class Handler
         if (!$response) $response = new \Slim\Http\Response();
 
         if (!$this->requestIsXhr()) {
+            // TODO: Use flash here.
             return $response->withHeader('Location',  $this->getHeaderUrl())->withStatus(303);
         }
         if ($this->newCsrf) $json['csrf'] = $this->newCsrf;
@@ -122,6 +123,7 @@ class Handler
         if (is_array($error)) $error = implode('<br>', $error);
 
         if (!$this->requestIsXhr()) {
+            // TODO: Use flash here.
             return $response->withHeader('Location',  $this->getHeaderUrl())->withStatus(303);
         }
         $json = array('error' => $error);

@@ -13,6 +13,7 @@ const SUBMIT_DISABLED_TEXT = "{{ string('buttons.submit_d') }}";
 </script>
 {% endblock %}
 {% block content %}
+{# TODO: Order states, product_ids, listkeys search should go here. #}
 {% if orders|length %}
     <div class="section orders">
     {% for order in orders %}
