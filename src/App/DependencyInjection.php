@@ -208,6 +208,11 @@ class DependencyInjection
               return new \App\Entity\File(...$c);
           });
       };
+      $di['model.fiancial'] = function($di) {
+          return new \App\Model\Financial($di, function(...$c) {
+              return new \App\Entity\Financial(...$c);
+          });
+      };
       $di['model.session_data'] = function($di) {
           return new \App\Model\SessionData($di, function(...$c) {
               return new \App\Entity\Entity(...$c);
