@@ -8,7 +8,7 @@ class AdminCtrl extends BaseCtrl
      * @param \Slim\Http\Request $request
      * @param \Slim\Http\Response $response
      * @param array $args Not used.
-     * @return \Slim\Http\Response The rendered view.
+     * @return \Psr\Http\Message\ResponseInterface The rendered view.
      */
     public function reset($request, $response, $args) {
         $this->di->db->reset();
@@ -24,7 +24,7 @@ class AdminCtrl extends BaseCtrl
      * @param \Slim\Http\Request $request
      * @param \Slim\Http\Response $response
      * @param array $args Not used.
-     * @return \Slim\Http\Response The rendered view.
+     * @return \Psr\Http\Message\ResponseInterface The rendered view.
      */
     public function handleSql($request, $response, $args) {
         $db = $this->di->db;
@@ -46,7 +46,7 @@ class AdminCtrl extends BaseCtrl
      * @param \Slim\Http\Request $request
      * @param \Slim\Http\Response $response
      * @param array $args Not used.
-     * @return \Slim\Http\Response The rendered view.
+     * @return \Psr\Http\Message\ResponseInterface The rendered view.
      */
     public function sql($request, $response, $args) {
         return $this->view->render($response, '@private/admin/sql.twig');

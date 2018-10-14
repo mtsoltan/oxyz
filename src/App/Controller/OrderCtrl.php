@@ -11,6 +11,7 @@ class OrderCtrl extends BaseCtrl
      * @return \Psr\Http\Message\ResponseInterface The rendered view.
      */
     public function all($request, $response, $args) {
+        /** @var \App\Model\Order $orderModel */
         $orderModel = $this->di['model.order'];
         $data = [];
         if (!is_null($product_id = $request->getQueryParam('product_id'))) {
