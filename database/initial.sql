@@ -167,7 +167,7 @@ CREATE TABLE IF NOT EXISTS `financials` (
   `order_id` INT UNSIGNED NOT NULL, -- First 20 are reserved for special financials.
   `item` VARCHAR(255) NOT NULL,
   `item_amount` SMALLINT UNSIGNED NOT NULL,
-  `transaction` INT NOT NULL,
+  `transaction` DECIMAL(9,2) NOT NULL,
   `note` TEXT,
   `create_timestamp` INT UNSIGNED NOT NULL,
   `update_timestamp` INT UNSIGNED NOT NULL,
