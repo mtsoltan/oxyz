@@ -10,5 +10,31 @@ class Financial extends Entity
         return $keystoreModel::TYPE_OTHER;
     }
 
-    // TODO: Complex financial logic and getters here.
+    /**
+     * @return \App\Entity\Customer
+     */
+    public function getCustomer() {
+
+    }
+
+    /**
+     * @return \App\Entity\Order
+     */
+    public function getOrder() {
+
+    }
+
+    public function cancel() {
+
+    }
+
+    public function finalize() {
+
+    }
+
+    public function roll() {
+
+    }
+
+    // TODO: Complex financial logic here.
 }

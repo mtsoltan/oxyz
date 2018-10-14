@@ -57,6 +57,17 @@ class Entity
         return $this->getData()[$el];
     }
 
+    public function getWithLanguage($el, $ln) {
+        if (!in_array($el, $this->ini)) {
+            throw new \InvalidArgumentException('The element isn\'t available in many languages');
+        }
+        $processed = $this->getData()[$el];
+        $parsed = parse_ini_string($processed, true, INI_SCANNER_RAW);
+        if (!count($parsed)) return $processed;
+        if (isset($parsed[$ln])) return $parsed[$ln];
+        return $parsed;
+    }
+
     public function getData() {
         $data = $this->data;
         $data['keys'] = $this->privateKeys;

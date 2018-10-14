@@ -37,14 +37,30 @@ class Order extends Entity
         return $this;
     }
 
+    /**
+     * @return \App\Entity\File
+     */
     public function getFile() {
         return $this->di['model.file']->getById($this->file_id);
     }
 
+    /**
+     * @return \App\Entity\Product
+     */
     public function getProduct() {
         return $this->di['model.product']->getById($this->product_id);
     }
 
+    /**
+     * @return \App\Entity\Financial
+     */
+    public function getFinancials() {
+        return $this->di['model.financial']->getByEntityData(['order_id' => $this->id]);
+    }
+
+    /**
+     * @return \App\Entity\Customer
+     */
     public function getCustomer() {
         return $this->di['model.customer']->getById($this->customer_id);
     }
@@ -98,5 +114,24 @@ class Order extends Entity
     public function verify() {
         $this->getCustomer()->verify();
         return $this;
+    }
+
+    /**
+     * @param float $tx
+     * @param string $note
+     */
+    public function createFinancial($tx, $note = '') {
+        // Create a new Financial.
+        /** @var \App\Model\Financial $model */
+        $model = $this->di['model.financial'];
+        $model->createEntity([
+            'state' => $model::STATE_PENDING,
+            'customer_id' => $this->customer_id,
+            'order_id' => $this->id,
+            'item' => $this->getProduct()->getWithLanguage('name', 'en'),
+            'item_amount' => $this->amount,
+            'transaction' => $tx,
+            'note' => $note,
+        ]);
     }
 }
