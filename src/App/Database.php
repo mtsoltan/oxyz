@@ -51,6 +51,13 @@ class Database extends \PDO
     }
 
     public function query($q) {
+        if (strpos($q, ';') !== false) {
+            foreach (explode(';', $q) as $qShard) {
+                $this->query($qShard);
+            }
+            return $this;
+        }
+        if (!strlen(trim($q))) return $this;
         $this->queries[] = $q;
         $this->currentStatement = parent::query($q);
         return $this;

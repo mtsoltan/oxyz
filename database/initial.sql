@@ -144,7 +144,7 @@ CREATE TABLE IF NOT EXISTS `customers` (
   ) ENGINE=InnoDB CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `orders` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT, -- First 20 are reserved for special financials.
   `state` TINYINT UNSIGNED NOT NULL, -- ENUM: Pending, Cancelled, Finalized, Rolled
   `product_id` SMALLINT UNSIGNED NOT NULL, -- IDREF: Products
   `customer_id` SMALLINT UNSIGNED NOT NULL, -- IDREF: Customers
@@ -164,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `financials` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `state` TINYINT UNSIGNED NOT NULL, -- ENUM: Pending, Cancelled, Finalized, Rolled
   `customer_id` SMALLINT UNSIGNED NOT NULL,
-  `order_id` INT UNSIGNED NOT NULL,
+  `order_id` INT UNSIGNED NOT NULL, -- First 20 are reserved for special financials.
   `item` VARCHAR(255) NOT NULL,
   `item_amount` SMALLINT UNSIGNED NOT NULL,
   `transaction` INT NOT NULL,
