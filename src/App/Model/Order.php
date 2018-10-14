@@ -13,9 +13,8 @@ class Order extends Model
         return 'orders';
     }
 
-    public function getPending() {
-        return $this->getByEntityData(
-            ['state' => self::STATE_PENDING, 'state' => self::STATE_ENABLED], 0, 0,
+    public function getSorted($data, $limit = 0, $offset = 0) {
+        return $this->getByEntityData($data, $limit, $offset,
             ['create_timestamp', self::SORT_DESC]);
     }
 

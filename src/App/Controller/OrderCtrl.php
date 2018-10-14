@@ -31,7 +31,7 @@ class OrderCtrl extends BaseCtrl
             $listKeys = $request->getQueryParam('listkeys');
         }
 
-        $orders = $orderModel->getByEntityData($data);
+        $orders = $orderModel->getSorted($data);
         $idedProduct = null;
         if (!isset($data['product_id'])) {
             $products = $this->di['model.product']->getAllServices(); // Including disabled.
