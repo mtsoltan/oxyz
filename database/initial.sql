@@ -164,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `financials` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `state` TINYINT UNSIGNED NOT NULL, -- ENUM: Pending, Cancelled, Finalized, Rolled
   `customer_id` SMALLINT UNSIGNED NOT NULL,
-  `order_id` INT UNSIGNED NOT NULL, -- First 20 are reserved for special financials.
+  `order_id` INT UNSIGNED NOT NULL, -- First 19 are reserved for special financials.
   `item` VARCHAR(255) NOT NULL,
   `item_amount` SMALLINT UNSIGNED NOT NULL,
   `transaction` DECIMAL(9,2) NOT NULL,
