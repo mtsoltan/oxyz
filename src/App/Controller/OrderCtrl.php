@@ -32,6 +32,7 @@ class OrderCtrl extends BaseCtrl
         }
 
         $orders = $orderModel->getSorted($data);
+        $orders = array_filter($orders, function ($o) { return !$o->product_id; });
         $idedProduct = null;
         if (!isset($data['product_id'])) {
             $products = $this->di['model.product']->getAllServices(); // Including disabled.
