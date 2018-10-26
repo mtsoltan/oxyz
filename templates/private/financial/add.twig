@@ -1,0 +1,24 @@
+{% extends "@layout/layout_form.twig" %}
+{% set title = string('titles.financial_add') %}
+{% set target = url('financial:handleAdd') %}
+{% set csrf = 1 %}
+{# TODO: Build this. #}
+{% block scripts %}
+    <script>
+        const DISABLED_TEXT = "{{ string('buttons.create_d') }}";
+        $('form').on('submit', function(){
+            $('button[type=submit]').attr({'disabled':'disabled'}).text(DISABLED_TEXT);
+        });
+    </script>
+{% endblock %}
+{% block form %}
+    <div class="notice">{{ string('descriptions.username_constraints')|raw }}</div>
+    <p>
+        <input type="text" placeholder="{{ string('fields.user.username') }}" name="username" pattern="[0-9a-zA-Z]{1,20}">
+        <textarea placeholder="{{ string('fields.user.state_text.label') }}" name="state_text"></textarea>
+    </p>
+    <p>
+        <button type="submit" class="btn blue solid">{{ string('buttons.create') }}</button>
+    </p>
+    <div class="clear"></div>
+{% endblock %}
