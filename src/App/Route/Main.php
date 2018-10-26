@@ -2,6 +2,7 @@
 namespace App\Route;
 
 use App\Controller\AdminCtrl;
+use App\Controller\FinancialCtrl;
 use App\Controller\SessionCtrl;
 use App\Controller\FileCtrl;
 use App\Controller\MainCtrl;
@@ -48,8 +49,15 @@ class Main extends Base
             })->add($this->access()->requirePermission('user_edit'));
 
             $this->group('/admin', function () {
-                $this->get('/orders', OrderCtrl::class.':all')->setName('order:all'); // Takes query params: product_id, state, listkeys
-                $this->post('/orders/{order:[0-9]+}', OrderCtrl::class.':edit')->setName('order:edit');
+                // Takes query params: product_id, state, listkeys, TODO: listfinancials
+                $this->get('/orders', OrderCtrl::class.':all')->setName('order:all');
+                $this->post('/order/edit/{order:[0-9]+}', OrderCtrl::class.':edit')->setName('order:edit');
+                // Takes query params: product_id, state
+                $this->get('/financials', FinancialCtrl::class.':all')->setName('financial:all');
+                $this->get('/financial/add', FinancialCtrl::class.':add')->setName('financial:add');
+                $this->post('/financial/add', FinancialCtrl::class.':handleAdd')->setName('financial:handleAdd');
+                $this->get('/financial/added', FinancialCtrl::class.':added')->setName('financial:added');
+                $this->post('/financial/edit/{financial:[0-9]+}', FinancialCtrl::class.':edit')->setName('financial:edit');
             })->add($this->access()->requirePermission('order_edit'));
 
             $this->group('/admin', function () {
