@@ -1,5 +1,7 @@
 # OXYZ
 The website repository for originalxyz.com.
+The website works in both English and Arabic.
+
 This repository was built on top of [Slim Framework](https://www.slimframework.com/) and uses Psr requests, responses and composer loading.
 To install:
 1. Install composer.
